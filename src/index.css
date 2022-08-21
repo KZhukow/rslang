@@ -7,3 +7,4 @@
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 }
+@import './components/pages/statistics/render/mainStatistics.css';
