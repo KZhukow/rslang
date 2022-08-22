@@ -22,7 +22,6 @@ const amountDateLength = 10;
 
 export default function GrafStatictics({ title, titleX, titleY, allTimeStatistic, amountY }: IDataGrafStatistis) {
   const data = [...allTimeStatistic.daysProgress];
-  console.log(data);
   data.forEach((a) => {
     if ((a.date as string).length > amountDateLength) {
       a.date = `${`${a.date}`.slice(8, 10)}.${`${a.date}`.slice(5, 7)}.${`${a.date}`.slice(0, 4)}`;

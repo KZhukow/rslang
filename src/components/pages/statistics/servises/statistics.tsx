@@ -1,9 +1,10 @@
+/* eslint-disable no-console */
 /* eslint-disable max-len */
 /* eslint-disable quote-props */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useState, useEffect } from 'react';
-import { dataUser, ISignin, IUserStatisticData } from '../../interfaces/interfaces';
-import { SIGNIN, USERS } from './const';
+import { dataUser, ISignin, IUserStatisticData } from '../../../interfaces/interfaces';
+import { SIGNIN, USERS } from '../const';
 
 export function getStatistics() {
   const [statisticsOfUser, setStatisticsOfUser] = useState<IUserStatisticData>();
@@ -20,7 +21,7 @@ export function getStatistics() {
   useEffect(() => {
     getStatisticsOfUser();
   }, []);
-  return { statisticsOfUser };
+  return statisticsOfUser;
 }
 
 export function upsertStatistics(): void {
@@ -48,7 +49,7 @@ export function upsertStatistics(): void {
   }
   useEffect(() => {
     upsertStatisticsOfUser();
-  });
+  }, []);
 }
 
 export function getDataUser() {
