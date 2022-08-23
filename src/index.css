@@ -7,4 +7,28 @@
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 }
+#root{
+  display: flex;
+  flex-direction: column;
+}
+header {
+  display: flex;
+  background: black;
+  justify-content: center;
+
+}
+header * {
+  color: white;
+  padding: 2rem;
+}
+.pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+}
+.active {
+  color: green;
+  cursor: default;
+}
 @import './components/pages/statistics/mainStatistics.css';

@@ -36,6 +36,7 @@
         "no-plusplus": "off",
         "no-param-reassign": 0,
         "object-curly-newline": 0,
+        "linebreak-style": ["error", "windows"],
         "import/extensions": [
             "error",
             "ignorePackages",

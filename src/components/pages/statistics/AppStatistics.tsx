@@ -10,12 +10,10 @@ export default function AppStatistics() {
   const authrize = localStorage.getItem('userData');
   // eslint-disable-next-line no-console
   return (
-    <div className="wrapper">
-      <header className="header" />
+    <>
       {statisticsOfUser && <Authorize statisticsOfUser={statisticsOfUser} />}
       {' '}
       {!authrize && <NotAuthorize />}
-      <footer className="footer" />
-    </div>
+    </>
   );
 }
