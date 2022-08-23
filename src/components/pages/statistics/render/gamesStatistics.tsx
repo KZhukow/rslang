@@ -1,14 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable max-len */
 
-import { IGamesStatistic, IUserStatisticData } from '../../../interfaces/interfaces';
-import { learnSvg, learnWords, procentSvg, procentRight, strictSvg, strick, titleAll, newWordDay, learnWordDay, procentAnswerOfDay } from '../const';
+import { learnSvg, learnWords, procentSvg, procentRight, strictSvg, strick, titleAll, newWordDay, learnWordDay, procentAnswerOfDay } from '../const/const';
+import { statisticsProps, IUserStatisticData } from '../interfaces/interfaces';
 import Procent from '../utils/utils';
-
-interface statisticsProps {
-  title: string,
-  statisticsGame: IGamesStatistic
-}
 
 export function GamesStatistics({ title, statisticsGame }: statisticsProps) {
   const procent = Procent(statisticsGame.allRightofDay, statisticsGame.allWrongofDay);

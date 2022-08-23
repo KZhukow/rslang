@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 /* eslint-disable no-console */
-import React from 'react';
 import {
   LineChart,
   Line,
@@ -9,16 +8,8 @@ import {
   CartesianGrid,
   Tooltip,
 } from 'recharts';
-import { IAlltimeStatistic } from '../../../interfaces/interfaces';
-
-interface IDataGrafStatistis {
-  title: string;
-  titleX: string;
-  titleY: string;
-  allTimeStatistic: IAlltimeStatistic;
-  amountY: string;
-}
-const amountDateLength = 10;
+import { amountDateLength } from '../const/const';
+import { IDataGrafStatistis } from '../interfaces/interfaces';
 
 export default function GrafStatictics({ title, titleX, titleY, allTimeStatistic, amountY }: IDataGrafStatistis) {
   const data = [...allTimeStatistic.daysProgress];

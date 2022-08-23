@@ -1,11 +1,7 @@
 /* eslint-disable max-len */
-import { IUserStatisticData } from '../../../interfaces/interfaces';
+import { PropsAuthorize } from '../interfaces/interfaces';
 import { GamesStatistics, AllStatisticsOfDay } from './gamesStatistics';
 import GrafStatictics from './grafStatistics';
-
-interface PropsAuthorize {
-  statisticsOfUser: IUserStatisticData;
-}
 
 export default function Authorize({ statisticsOfUser }: PropsAuthorize) {
   const { optional } = statisticsOfUser;

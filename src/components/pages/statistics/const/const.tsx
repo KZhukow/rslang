@@ -16,3 +16,4 @@ export const titleAll = 'Статистика за сегодня';
 export const newWordDay = 'Новых слов';
 export const learnWordDay = 'Слов изучено';
 export const procentAnswerOfDay = 'Правильных ответов';
+export const amountDateLength = 10;

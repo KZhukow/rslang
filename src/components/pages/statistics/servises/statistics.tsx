@@ -3,8 +3,8 @@
 /* eslint-disable quote-props */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useState, useEffect } from 'react';
-import { dataUser, ISignin, IUserStatisticData } from '../../../interfaces/interfaces';
-import { SIGNIN, USERS } from '../const';
+import { SIGNIN, USERS } from '../const/const';
+import { IUserStatisticData, dataUser, ISignin } from '../interfaces/interfaces';
 
 export function getStatistics() {
   const [statisticsOfUser, setStatisticsOfUser] = useState<IUserStatisticData>();
@@ -28,7 +28,7 @@ export function upsertStatistics(): void {
   const sts: IUserStatisticData = {
     learnedWords: 2,
     optional: {
-      allTimeStatistic: { daysProgress: [], words: [] },
+      allTimeStatistic: { daysProgress: [{ date: new Date(), learnedWords: 2, learnedWordsOfDay: 2, allRightofDay: 4, allWrongofDay: 4, newWordsOfDay: ['sdasd', 'sdsdsds'] }], words: [] },
       dayStatistic: { date: new Date(), learnedWords: 2, learnedWordsOfDay: 2, allRightofDay: 4, allWrongofDay: 4, newWordsOfDay: ['sdasd', 'sdsdsds'] },
       sprint: { learnedWords: 2, bestSeries: 3, allRightofDay: 4, allWrongofDay: 4, newWordsOfDay: [] },
       audioCall: { learnedWords: 2, bestSeries: 3, allRightofDay: 4, allWrongofDay: 4, newWordsOfDay: [] },
