@@ -11,7 +11,7 @@ export default function AppStatistics() {
   // eslint-disable-next-line no-console
   return (
     <>
-      {statisticsOfUser && <Authorize statisticsOfUser={statisticsOfUser} />}
+      {statisticsOfUser && authrize && <Authorize statisticsOfUser={statisticsOfUser} />}
       {' '}
       {!authrize && <NotAuthorize />}
     </>
