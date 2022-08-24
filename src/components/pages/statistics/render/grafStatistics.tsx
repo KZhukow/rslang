@@ -10,6 +10,9 @@ import {
 } from 'recharts';
 import { amountDateLength } from '../const/const';
 import { IDataGrafStatistis } from '../interfaces/interfaces';
+// Толщина  рисуемой линии графика и ее цвет
+const strokeWidth = 3;
+const stroke = 'black';
 
 export default function GrafStatictics({ title, titleX, titleY, allTimeStatistic, amountY }: IDataGrafStatistis) {
   const data = [...allTimeStatistic.daysProgress];
@@ -20,7 +23,7 @@ export default function GrafStatictics({ title, titleX, titleY, allTimeStatistic
 
     if ((a.newWordsOfDay as Array<string>).length) a.newWordsOfDay = (a.newWordsOfDay as Array<string>).length;
   });
-
+  // в lineChart  - размеры самого графика 700/400;
   return (
     <div className="graficStatistics">
       <p className="nameGrafic">
@@ -49,7 +52,7 @@ export default function GrafStatictics({ title, titleX, titleY, allTimeStatistic
             domain={['-', '-']}
           />
           <Tooltip />
-          <Line type="monotone" dataKey={amountY} fill="black" />
+          <Line type="monotone" dataKey={amountY} strokeWidth={strokeWidth} stroke={stroke} />
         </LineChart>
         <p className="nameGraficX">
           {' '}
