@@ -22,7 +22,7 @@ class Main extends React.Component {
               <div className="title_underline" />
             </div>
           </section>
-          <div className="gap" />
+          <div className="gap light_gap" />
           <section className="section_about">
             <div className="about_title">
               <h2 className="title_text">OUR TEAM</h2>

@@ -1,20 +1,36 @@
 /* ////////////  START  //////////// */
 .section_start {
-    height: 88vh;
+    height: 86vh;
     padding: 5rem 0;
-    background-color: rgba(68, 233, 255, 0.4);
 }
 
 /* ////////////  GAP  //////////// */
 .gap {
-    height: 1rem;
-    background: linear-gradient(67deg, rgba(10, 255, 235), rgb(149, 2, 190));
+    width: 100%;
+    height:1rem;
+    background: linear-gradient(67deg, rgb(149, 2, 190), rgb(10, 255, 235));
+    background-size: 400% 400%;
+    animation: background 5s ease infinite;
+    transform: translate3d(0, 0, 0);
+}
+
+@keyframes background {
+
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+
 }
 
 /* ////////////  ABOUT  //////////// */
 .section_about {
     padding: 5rem 0;
-    background-color: rgba(68, 233, 255, 0.4);
 }
 
 .about_title {
@@ -22,7 +38,6 @@
 }
 
 .title_text {
-    color: #320259;
     font-size: 2rem;
     letter-spacing: 0.1rem;
     line-height: 1.25;
@@ -32,7 +47,7 @@
 .title_underline {
     width: 9rem;
     height: 0.25rem;
-    background: #320259;
+    background: #035dab;
     margin-left: auto;
     margin-right: auto;
 }
@@ -40,7 +55,7 @@
 .main_slider {
     width: 85vw;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     margin: 4rem auto;
 }
@@ -55,8 +70,7 @@
 }
 
 .container_img {
-    width: 100%;
-    height: 17rem;
+    height: 17vw;
     display: block;
     object-fit: cover;
     transition: all 0.3s linear;
@@ -70,7 +84,6 @@
     padding: 1rem 0 0;
     font-size: 1.5rem;
     font-weight: 700;
-    color: #320259;
 }
 
 .about_btn {
@@ -80,10 +93,31 @@
     text-align: center;
 }
 
-@media (max-width: 1276px) {
+@media (max-width: 1200px) {
 
-    .about_slider {
-        width: 70vw;
+    .main_slider {
+        width: 80vw;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        margin: 2rem auto;
+    }
+    .slider_item {
+        padding: 2rem;
+    }
+    .container_img {
+        height: 25vw;
+    }
+
+}
+
+@media (max-width: 860px) {
+
+    .main_slider {
+        grid-template-columns: 1fr;;
+    }
+    .container_img {
+        height: 35vw;
     }
 
 }

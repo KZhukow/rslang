@@ -1,0 +1,78 @@
+.themeToggle {
+    border: 0;
+    border-radius: 50%;
+    margin: 0 1rem;
+    background-color: rgb(255, 255, 255, 0);
+    text-shadow: 2px 2px 3px #ffffff;
+}
+
+.theme_btn {
+    width: 3rem;
+    height: 3rem;
+    padding: 0.1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
+.light:hover {
+    background-color: #bfe2ff;
+}
+
+.dark:hover {
+    background-color: #337ab7;
+}
+
+.dark_header,
+.dark_footer{
+    background: linear-gradient(67deg, rgb(19, 28, 150), rgb(9, 16, 86), rgb(58, 8, 79));
+}
+
+.dark_gap {
+    background: linear-gradient(67deg, rgb(19, 28, 150), rgb(58, 8, 79));
+    background-size: 400% 400%;
+}
+
+.dark_body,
+.dark_modal_popup {
+    background-color: #223c50;
+    color: #bfe2ff;
+}
+
+.dark_nav {
+    color: #bfe2ff;
+    text-shadow: 2px 2px 3px #000000;
+}
+
+.dark_form_btn {
+    color: #bfe2ff;
+}
+
+.dark_form_btn:hover {
+    border-radius: 1rem;
+    background-color: rgb(3, 93, 171, 0.4);
+}
+
+.dark_about_item_img_border:after {
+    background-color: #bfe2ff;
+}
+
+.dark_about_item_img_border:before {
+    background-color: rgba(51, 122, 183, 0.3);
+}
+
+.dark_game_title_border {
+    width: 12.5rem;
+    height: 12.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 1.9rem auto;
+    border: 0.5rem solid #bfe2ff;
+    background: #337ab7;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    box-shadow: 1rem 1rem 3.2rem rgba(0, 0, 0, 0.2);
+    animation: anim-title_border 10s infinite;
+
+}

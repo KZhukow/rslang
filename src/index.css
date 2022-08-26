@@ -12,6 +12,8 @@ html {
 
 body {
   overflow-x: hidden;
+  background-color: rgba(68, 233, 255, 0.4);
+  color: #320259;
 }
 
 a {
@@ -21,7 +23,7 @@ a {
 .btn {
   text-transform: uppercase;
   background: #035dab;
-  color: #eaded7;
+  color: #7bbbfd;
   padding: 0.375rem 0.75rem;
   letter-spacing: 0.1rem;
   display: inline-block;
@@ -29,13 +31,12 @@ a {
   transition: all 0.3s linear;
   font-size: 0.9rem;
   cursor: pointer;
-  box-shadow: 0 1px 3px rgb(0 0 0 / 20%);
   border-radius: 0.25rem;
   border-color: transparent;
 }
 
 .btn:hover {
-  background: #eaded7;
+  background: #7bbbfd;
   color: #035dab;
 }
 
@@ -51,9 +52,9 @@ a {
 
 .header_container {
   width: 100%;
-  margin: 0 10%;
+  margin: 0 3%;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr auto auto;
   align-items: center;
 }
 
@@ -88,7 +89,23 @@ a {
 }
 
 .nav_item {
-  margin: 0 1.5rem;
+  margin: 0 3%;
+}
+
+@media (max-width: 1300px) {
+
+  .nav_item {
+    margin: 0;
+  }
+
+}
+
+@media (max-width: 1080px) {
+
+  .nav_item {
+    display: none;
+  }
+
 }
 
 .nav_link {
@@ -101,7 +118,7 @@ a {
   padding: 0.4rem 0.5rem;
   transition: all 0.3s linear;
   margin: 0 1.2rem;
-  text-shadow: 2px 2px 3px rgb(255, 255, 255);
+  text-shadow: 2px 2px 3px #ffffff;
 }
 
 .nav_link:hover {
@@ -109,7 +126,7 @@ a {
 }
 
 .header_authorization {
-  width: 5rem;
+  width: 9.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,6 +136,7 @@ a {
   display: flex;
   border: 0;
   border-radius: 1.8rem;
+  transition: all 0.3s linear;
   background-color: rgb(255, 255, 255, 0);
   cursor: pointer;
 }
@@ -178,7 +196,7 @@ a {
   width: auto;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: #bfe2ff;
   background-clip: padding-box;
   border: 5px solid #035dab;
   border-radius: 20% 40% / 50% 20%;
@@ -186,11 +204,13 @@ a {
 }
 
 @media (min-width: 576px) {
+
   .modal_popup {
     max-width: 32rem;
     margin: 10% auto;
     box-shadow: 0 5px 1rem rgba(0, 0, 0, 0.6);
   }
+
 }
 
 .popup_header {
@@ -201,7 +221,7 @@ a {
   border-bottom: 2px solid #035dab;
 }
 
-.form_btn{
+.form_btn {
   margin: 0 auto;
   padding: 0.2rem 0.5rem;
   line-height: 1.5;
@@ -209,7 +229,13 @@ a {
   text-transform: uppercase;
   font-weight: 800;
   border: none;
-  background-color: #ffffff;
+  color: #035dab;
+  background-color: rgb(255, 255, 255, 0);
+}
+
+.form_btn:hover {
+  border-radius: 1rem;
+  background-color: rgb(3, 93, 171, 0.4);
 }
 
 .active {
@@ -217,15 +243,10 @@ a {
   background-color: #7bbbfd;
 }
 
-.form_btn:hover {
-  border-radius: 1rem;
-  background-color: rgba(191, 226, 255, 0.4);
-}
-
 .vertical {
   width: 0.1rem;
   height: 2rem;
-  background-color: black;
+  background-color: #035dab;
 }
 
 .popup_btn_close {
@@ -235,9 +256,8 @@ a {
   line-height: 1;
   color: #000000;
   opacity: 0.5;
-  text-shadow: 0 1px 0 #fff;
   border: none;
-  background-color: #ffffff;
+  background-color: rgb(255, 255, 255, 0);
 }
 
 .popup_btn_close:focus,
@@ -248,7 +268,6 @@ a {
 
 .popup_body {
   position: relative;
-
   padding: 1rem 3rem;
   overflow: auto;
 }
@@ -320,7 +339,7 @@ a {
 }
 
 .github_link {
-  margin: 0 3rem;
+  margin: 0 9%;
 }
 
 .github_logo {

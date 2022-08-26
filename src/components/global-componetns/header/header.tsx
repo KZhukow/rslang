@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../../../assets/images/logo.png';
 import Authorization from '../authorization/Authorization';
+import ThemeToggle from '../themeToggle/ThemeToggle';
 
 export default function Header() {
   return (
@@ -29,6 +30,7 @@ export default function Header() {
           </li>
         </div>
         <Authorization />
+        <ThemeToggle />
       </div>
     </header>
   );

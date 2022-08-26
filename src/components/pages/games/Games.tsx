@@ -14,7 +14,7 @@ class GamesPage extends React.Component {
         <Header />
         <main className="games">
           <section className="game">
-            <div className="game_title_border">
+            <div className="game_title_border light_game_title_border">
               <h2 className="game_title_text">listening</h2>
             </div>
             <p className="game_description_text">
@@ -28,7 +28,7 @@ class GamesPage extends React.Component {
             </p>
           </section>
           <section className="game">
-            <div className="game_title_border">
+            <div className="game_title_border light_game_title_border">
               <h2 className="game_title_text">sprint</h2>
             </div>
             <p className="game_description_text">
