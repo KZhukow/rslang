@@ -19,8 +19,8 @@ export interface IAlltimeStatistic {
 }
 export interface IDataGrafStatistis {
   title: string;
-  titleX: string;
-  titleY: string;
+  titleX?: string;
+  titleY?: string;
   allTimeStatistic: IAlltimeStatistic;
   amountY: string;
 }
@@ -34,7 +34,7 @@ export interface IOptionalStatistic {
 
 export interface IUserStatisticData {
   id?: string;
-  learnedWords: number;
+  learnedWords?: number;
   optional: IOptionalStatistic;
 }
 export interface PropsAuthorize {
@@ -42,15 +42,10 @@ export interface PropsAuthorize {
 }
 
 export interface IUser {
-  name: string;
+  name?: string;
   email: string;
   password: string;
-}
-
-export interface IUserCreate {
-  email: string;
-  id: string;
-  name: string;
+  avatar?: string,
 }
 
 export interface dataUser {

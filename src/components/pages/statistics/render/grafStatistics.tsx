@@ -8,13 +8,13 @@ import {
   CartesianGrid,
   Tooltip,
 } from 'recharts';
-import { amountDateLength } from '../const/const';
+import { amountDateLength, axisX, axisY } from '../const/const';
 import { IDataGrafStatistis } from '../interfaces/interfaces';
 // Толщина  рисуемой линии графика и ее цвет
 const strokeWidth = 3;
 const stroke = 'black';
 
-export default function GrafStatictics({ title, titleX, titleY, allTimeStatistic, amountY }: IDataGrafStatistis) {
+export default function GrafStatictics({ title, titleX = axisX, titleY = axisY, allTimeStatistic, amountY }: IDataGrafStatistis) {
   const data = [...allTimeStatistic.daysProgress];
   data.forEach((a) => {
     if ((a.date as string).length > amountDateLength) {

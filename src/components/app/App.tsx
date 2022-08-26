@@ -1,20 +1,16 @@
-import { Routes, Route } from 'react-router-dom';
-import Layout from '../global-componetns/layout';
-import AppMain from '../pages/main/main';
-import Notfoundpage from '../pages/notFoundPage';
+import React, { useState, createContext } from 'react';
 import AppStatistics from '../pages/statistics/AppStatistics';
-import AppTutorial from '../pages/tutorial/tutorial';
+
+export type TAuthorizedCtx = [boolean, React.Dispatch<React.SetStateAction<boolean>>]
+
+export const AuthotizedCtx = createContext([] as unknown as TAuthorizedCtx);
 
 function App() {
+  const authotizedInitCtx = useState(true);
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<AppMain />} />
-        <Route path="statistics" element={<AppStatistics />} />
-        <Route path="tutorial" element={<AppTutorial />} />
-        <Route path="*" element={<Notfoundpage />} />
-      </Route>
-    </Routes>
+    <AuthotizedCtx.Provider value={authotizedInitCtx}>
+      <AppStatistics />
+    </AuthotizedCtx.Provider>
   );
 }
 export default App;
