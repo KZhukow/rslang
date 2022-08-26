@@ -32,6 +32,7 @@
     "rules": {
         "react/react-in-jsx-scope": "off",
         "@typescript-eslint/no-var-requires": 0,
+        "no-unused-vars": "off",
         "no-console": 1,
         "no-plusplus": "off",
         "no-param-reassign": 0,
