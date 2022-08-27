@@ -2,6 +2,8 @@ import React from 'react';
 import './games.css';
 import Header from '../../global-componetns/header/Header';
 import Footer from '../../global-componetns/footer/Footer';
+import listening from '../../../assets/images/headphone.png';
+import sprint from '../../../assets/images/сhronometer.png';
 
 class GamesPage extends React.Component {
   constructor() {
@@ -14,29 +16,25 @@ class GamesPage extends React.Component {
         <Header />
         <main className="games">
           <section className="game">
-            <div className="game_title_border light_game_title_border">
-              <h2 className="game_title_text">listening</h2>
+            <div className="game_title_border">
+              <button type="button" className="game_btn">
+                <img className="game_img" src={listening} alt="Listening" />
+              </button>
             </div>
             <p className="game_description_text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-              qui officia deserunt mollit anim id est laborum
+              Check your listening skills, trying to pick the right meaning
+              after hearing a word. Be careful, as you just have one guess.
             </p>
           </section>
           <section className="game">
-            <div className="game_title_border light_game_title_border">
-              <h2 className="game_title_text">sprint</h2>
+            <div className="game_title_border">
+              <button type="button" className="game_btn">
+                <img className="game_img" src={sprint} alt="Sprint" />
+              </button>
             </div>
             <p className="game_description_text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              qui officia deserunt mollit anim id est laborum
+              Check how much points you can get in one minute, making educated
+              guesses about what is right and what is wrong.
             </p>
           </section>
         </main>

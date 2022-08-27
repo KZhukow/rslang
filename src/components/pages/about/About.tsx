@@ -18,7 +18,7 @@ class AboutPage extends React.Component {
         <main className="about">
           <div className="about_list">
             <article className="about_list_item">
-              <div id="article" className="about_item_img_border light_about_item_img_border">
+              <div id="article" className="about_item_img_border">
                 <img className="about_item_img" src={KZhukow} alt="KZhukow" />
               </div>
               <div className="about_item_description">
@@ -35,7 +35,7 @@ class AboutPage extends React.Component {
               </div>
             </article>
             <article className="about_list_item right">
-              <div className="about_item_img_border light_about_item_img_border">
+              <div className="about_item_img_border">
                 <img className="about_item_img" src={Lissa} alt="Lissa" />
               </div>
               <div className="about_item_description">
@@ -52,7 +52,7 @@ class AboutPage extends React.Component {
               </div>
             </article>
             <article className="about_list_item">
-              <div className="about_item_img_border light_about_item_img_border">
+              <div className="about_item_img_border">
                 <img className="about_item_img" src={Yamarauder} alt="Yamarauder" />
               </div>
               <div className="about_item_description">

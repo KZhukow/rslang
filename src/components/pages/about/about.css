@@ -35,14 +35,6 @@
     z-index: 100;
 }
 
-.light_about_item_img_border:after {
-    background-color: rgba(120, 219, 255, 0.71);
-}
-
-.light_about_item_img_border:before {
-    background-color: rgba(51, 117, 183, 0.77);
-}
-
 .about_item_img_border:after,
 .about_item_img_border:before {
     mix-blend-mode: multiply;
@@ -68,10 +60,12 @@
 
 .about_item_img_border:after{
     animation-delay: -5s;
+    background-color: rgba(120, 219, 255, 0.71);
     clip-path: polygon(0 0, calc(100% - (33px)) calc(0% + (33px)), 100% 100%, calc(0% + (33px)) calc(100% - (33px)));
 }
 
 .about_item_img_border:before {
+    background-color: rgba(51, 117, 183, 0.77);
     clip-path: polygon(calc(0% + (33px)) calc(0% + (33px)), 100% 0, calc(100% - (33px)) calc(100% - (33px)), 0 100%);
 }
 

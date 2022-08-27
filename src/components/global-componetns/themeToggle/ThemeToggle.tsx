@@ -29,18 +29,6 @@ export default function ThemeToggle() {
     document.querySelectorAll('.form_btn')!.forEach((item) => {
       item.classList.toggle('dark_form_btn');
     });
-    if (document.querySelectorAll('.about_item_img_border')) {
-      document.querySelectorAll('.about_item_img_border')!.forEach((item) => {
-        item.classList.toggle('light_about_item_img_border');
-        item.classList.toggle('dark_about_item_img_border');
-      });
-    }
-    if (document.querySelectorAll('.game_title_border')) {
-      document.querySelectorAll('.game_title_border')!.forEach((item) => {
-        item.classList.toggle('light_game_title_border');
-        item.classList.toggle('dark_game_title_border');
-      });
-    }
   }
 
   return (
