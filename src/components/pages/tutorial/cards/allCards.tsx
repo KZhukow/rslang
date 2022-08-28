@@ -4,20 +4,7 @@ import { wordsPage } from '../const';
 import { IWord } from '../types';
 import Card from './card';
 import { ReactComponent as Spinner } from '../image/spinner.svg';
-// import { CardsProp } from '../types';
 
-// export default function AllCards({ wordsInfo }: CardsProp) {
-//   return (
-//     <div className="cards">
-//       { wordsInfo.map((word) => (
-//         <Card
-//           word={word}
-//           key={word.id}
-//         />
-//       )) }
-//     </div>
-//   );
-// }
 interface ITutorialParams {
   group: string,
   page: string,
@@ -29,7 +16,6 @@ export default function AllCards() {
   const curGroup = +group - 1;
   const curPage = +page - 1;
 
-  // console.log(group, page);
   async function fetchWords(): Promise<void> {
     setLoading(true);
     const response = await fetch(wordsPage(curGroup, curPage));

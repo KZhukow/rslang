@@ -45,3 +45,8 @@ export interface AudioBtnsProp {
   id: string,
   audioSrc: IAudioSrc,
 }
+export interface CustomLinkProp {
+  children: React.ReactNode,
+  to: string,
+  className: string,
+}
