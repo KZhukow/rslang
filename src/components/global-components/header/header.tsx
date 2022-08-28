@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import logo from '../../../assets/images/logo.png';
 import Authorization from '../authorization/Authorization';
+import CustomHeaderLink from './header-custom-link';
 import ThemeToggle from './themeToggle/themeToggle';
 
 export default function Header() {
@@ -15,19 +16,19 @@ export default function Header() {
         </div>
         <div className="header_nav">
           <li className="nav_item">
-            <Link to="/" className="nav_link">home</Link>
+            <CustomHeaderLink to="/" className="nav_link">home</CustomHeaderLink>
           </li>
           <li className="nav_item">
-            <Link to="about" className="nav_link">about</Link>
+            <CustomHeaderLink to="about" className="nav_link">about</CustomHeaderLink>
           </li>
           <li className="nav_item">
-            <Link to={`glossary/${group || 1}/${page || 1}`} className="nav_link">glossary</Link>
+            <CustomHeaderLink to={`glossary/${group || 1}/${page || 1}`} className="nav_link">glossary</CustomHeaderLink>
           </li>
           <li className="nav_item">
-            <Link to="games" className="nav_link">games</Link>
+            <CustomHeaderLink to="games" className="nav_link">games</CustomHeaderLink>
           </li>
           <li className="nav_item">
-            <Link to="statistics" className="nav_link">statistics</Link>
+            <CustomHeaderLink to="statistics" className="nav_link">statistics</CustomHeaderLink>
           </li>
         </div>
         <Authorization />
