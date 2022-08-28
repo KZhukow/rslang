@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { wordsPage } from '../const';
 import { IWord } from '../types';
 import Card from './card';
@@ -16,11 +16,25 @@ export default function AllCards() {
   const curGroup = +group - 1;
   const curPage = +page - 1;
 
+  const navigate = useNavigate();
+
   async function fetchWords(): Promise<void> {
-    setLoading(true);
-    const response = await fetch(wordsPage(curGroup, curPage));
-    setWordsInfo(await response.json());
-    setLoading(false);
+    if (curGroup >= 0 && curGroup < 6 && curPage >= 0 && curPage < 30) {
+      if (Number.isInteger(curGroup) && Number.isInteger(curPage)) {
+        setLoading(true);
+        const response = await fetch(wordsPage(curGroup, curPage));
+        setWordsInfo(await response.json());
+        setLoading(false);
+      } else {
+        navigate(`../../glossary/${Math.floor(curGroup) + 1}/${Math.floor(curPage) + 1}`);
+      }
+    } else if (curGroup >= 0 && curGroup < 6) {
+      navigate(`../../glossary/${Math.floor(curGroup) + 1}/1`);
+    } else if (curPage >= 0 && curPage < 30) {
+      navigate(`../../glossary/1/${Math.floor(curPage) + 1}`);
+    } else {
+      navigate('../../glossary/1/1');
+    }
   }
 
   useEffect(() => {

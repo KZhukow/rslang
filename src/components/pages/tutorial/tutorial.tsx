@@ -22,6 +22,7 @@ export default function TutorialContent() {
   const navigate = useNavigate();
 
   function switchPageInput(e: React.FocusEvent<HTMLInputElement, Element>) {
+    e.preventDefault();
     let value = parseInt(e.target.value, 10);
     if (value <= 1) {
       value = 1;
