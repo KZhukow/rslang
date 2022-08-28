@@ -1,6 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable max-len */
-
 import { learnSvg, learnWords, procentSvg, procentRight, strictSvg, strick, titleAll, newWordDay, learnWordDay, procentAnswerOfDay } from '../const/const';
 import { statisticsProps, IUserStatisticData } from '../interfaces/interfaces';
 import Procent from '../utils/utils';
@@ -11,26 +8,19 @@ export function GamesStatistics({ title, statisticsGame }: statisticsProps) {
     <div className="wrapperStatisticsGame">
       <div className="wrapperStatisticsGameTitle">{title}</div>
       <div className="gamesStatistics">
-        {' '}
         {learnSvg}
-        {' '}
         {learnWords}
-        {' '}
         {statisticsGame.newWordsOfDay.length}
       </div>
       <div className="gamesStatistics">
         {procentSvg}
-        {' '}
         {procentRight}
-        {' '}
         {procent}
         %
       </div>
       <div className="gamesStatistics">
         {strictSvg}
-        {' '}
         {strick}
-        {' '}
         {statisticsGame.bestSeries}
       </div>
     </div>
@@ -48,9 +38,7 @@ export function AllStatisticsOfDay({ optional }: IUserStatisticData) {
             {(optional.dayStatistic.newWordsOfDay as Array<string>).length}
           </div>
           <div className="statisticAllDiscription">
-            {' '}
             {newWordDay}
-            {' '}
           </div>
         </div>
         <div className="statisticAll">
@@ -58,9 +46,7 @@ export function AllStatisticsOfDay({ optional }: IUserStatisticData) {
             {optional.dayStatistic.learnedWords}
           </div>
           <div className="statisticAllDiscription">
-            {' '}
             {learnWordDay}
-            {' '}
           </div>
         </div>
         <div className="statisticAll">
@@ -69,9 +55,7 @@ export function AllStatisticsOfDay({ optional }: IUserStatisticData) {
             %
           </div>
           <div className="statisticAllDiscription">
-            {' '}
             {procentAnswerOfDay}
-            {' '}
           </div>
         </div>
       </div>

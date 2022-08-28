@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable no-console */
 import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Line } from 'recharts';
 import { amountDateLength, axisX, axisY } from '../const/const';
 import { IDataGrafStatistis } from '../interfaces/interfaces';
@@ -7,25 +5,27 @@ import { IDataGrafStatistis } from '../interfaces/interfaces';
 const strokeWidth = 3;
 const stroke = 'black';
 
-export default function GrafStatictics({ title, titleX = axisX, titleY = axisY, allTimeStatistic, amountY }: IDataGrafStatistis) {
+export default function GrafStatictics(
+  { title, titleX = axisX, titleY = axisY, allTimeStatistic, amountY }: IDataGrafStatistis,
+) {
   const data = [...allTimeStatistic.daysProgress];
   data.forEach((a) => {
     if ((a.date as string).length > amountDateLength) {
       a.date = `${`${a.date}`.slice(8, 10)}.${`${a.date}`.slice(5, 7)}.${`${a.date}`.slice(0, 4)}`;
     }
 
-    if ((a.newWordsOfDay as Array<string>).length) a.newWordsOfDay = (a.newWordsOfDay as Array<string>).length;
+    if ((a.newWordsOfDay as Array<string>).length) {
+      a.newWordsOfDay = (a.newWordsOfDay as Array<string>).length;
+    }
   });
   // в lineChart  - размеры самого графика 700/400;
   return (
     <div className="graficStatistics">
       <p className="nameGrafic">
-        {' '}
         {title}
       </p>
       <div className="graficStatisticsView">
         <p className="nameGraficY">
-          {' '}
           {titleY}
         </p>
         <LineChart
