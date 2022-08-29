@@ -1,10 +1,13 @@
 import { createContext, useState } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
+import GameLayout from '../global-components/game-layout/game-layout';
 import MainLayout from '../global-components/main-layout/main-layout';
 import About from '../pages/about/about';
+import AudioCall from '../pages/audio-call/audio-call';
 import Error from '../pages/error/Error';
 import Games from '../pages/games/games';
 import Main from '../pages/main/main';
+import Sprint from '../pages/sprint/sprint';
 import Statistics from '../pages/statistics/statistics';
 import AllCards from '../pages/tutorial/cards/allCards';
 import TutorialContent from '../pages/tutorial/tutorial';
@@ -33,9 +36,9 @@ export default function App() {
             <Route path="glossary/*" element={<Navigate to="1/1" replace />} />
             <Route path="*" element={<Error />} />
           </Route>
-          <Route path="games" element={<h1>Game general content</h1>}>
-            <Route path="game1" element={<h2>Game1 content</h2>} />
-            <Route path="game2" element={<h2>Game2 content</h2>} />
+          <Route path="games" element={<GameLayout />}>
+            <Route path="audio-call" element={<AudioCall />} />
+            <Route path="sprint" element={<Sprint />} />
           </Route>
         </Routes>
       </AudioPlayCtx.Provider>
