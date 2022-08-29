@@ -1,0 +1,23 @@
+.game-layout {
+  height: 100vh;
+}
+
+.game-layout-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.game-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px 0;
+}
+
+.game-result {
+  display: none;
+}
