@@ -125,6 +125,10 @@ a {
   transform: scaleX(1.1);
 }
 
+.nav-link-active {
+  border: 2px solid black;
+}
+
 .header_authorization {
   width: 9.5rem;
   display: flex;

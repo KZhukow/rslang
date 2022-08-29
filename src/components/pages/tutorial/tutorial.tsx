@@ -4,6 +4,7 @@ import './tutorial.css';
 
 import { ReactComponent as OnePageArrow } from './image/one-page-arrow.svg';
 import { ReactComponent as AllPageArrow } from './image/all-page-arrow.svg';
+import CustomBtnLink from './custom-btn-link';
 
 interface ITutorialParams {
   group: string,
@@ -21,6 +22,7 @@ export default function TutorialContent() {
   const navigate = useNavigate();
 
   function switchPageInput(e: React.FocusEvent<HTMLInputElement, Element>) {
+    e.preventDefault();
     let value = parseInt(e.target.value, 10);
     if (value <= 1) {
       value = 1;
@@ -36,7 +38,6 @@ export default function TutorialContent() {
     <div className={`tutorialContent ${backGround[curGroup]}`}>
       {/* <div className="spinner"><Spinner /></div> */}
       <Outlet />
-      {/* <AllCards wordsInfo={wordsInfo} /> */}
       <div className="controllers">
         <div className="pagination">
           <Link to={`../glossary/${group}/1`} className="pagination-btn first-page-arr">
@@ -54,12 +55,12 @@ export default function TutorialContent() {
           </Link>
         </div>
         <div className="group-btns">
-          <Link to="../glossary/1/1" className="group-btn group-btn-green">1</Link>
-          <Link to="../glossary/2/1" className="group-btn group-btn-yellow">2</Link>
-          <Link to="../glossary/3/1" className="group-btn group-btn-orange">3</Link>
-          <Link to="../glossary/4/1" className="group-btn group-btn-pink">4</Link>
-          <Link to="../glossary/5/1" className="group-btn group-btn-purpure">5</Link>
-          <Link to="../glossary/6/1" className="group-btn group-btn-violet">6</Link>
+          <CustomBtnLink to={`../glossary/1/${+group === 1 ? curPage : 1}`} className="group-btn group-btn-green">1</CustomBtnLink>
+          <CustomBtnLink to={`../glossary/2/${+group === 2 ? curPage : 1}`} className="group-btn group-btn-yellow">2</CustomBtnLink>
+          <CustomBtnLink to={`../glossary/3/${+group === 3 ? curPage : 1}`} className="group-btn group-btn-orange">3</CustomBtnLink>
+          <CustomBtnLink to={`../glossary/4/${+group === 4 ? curPage : 1}`} className="group-btn group-btn-pink">4</CustomBtnLink>
+          <CustomBtnLink to={`../glossary/5/${+group === 5 ? curPage : 1}`} className="group-btn group-btn-purpure">5</CustomBtnLink>
+          <CustomBtnLink to={`../glossary/6/${+group === 6 ? curPage : 1}`} className="group-btn group-btn-violet">6</CustomBtnLink>
           <button type="button" className="group-btn group-btn-black">D</button>
         </div>
       </div>

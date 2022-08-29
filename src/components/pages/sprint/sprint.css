@@ -1,0 +1,71 @@
+.game-sprint {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-sprint-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tools {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.score-and-mute {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.game-sprint-main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  padding: 15px 50px;
+}
+.game-sprint-main-content * {
+  width: 100%;
+}
+.lamps,
+.birds {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.game-speaker-btn,
+.sprint-eng-word,
+.sprint-rus-word {
+  text-align: center;
+}
+
+.choice-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.lamp {
+  width: 40px;
+  fill: white;
+}
+
+.stick {
+  position: absolute;
+  transform: rotate(29deg);
+  top: -4px;
+  width: 270px;
+  height: 150px;
+}
+
+.bird {
+  z-index: 99;
+}
