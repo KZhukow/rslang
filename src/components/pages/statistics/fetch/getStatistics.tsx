@@ -1,7 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable max-len */
-/* eslint-disable quote-props */
-/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState, useEffect } from 'react';
 import { USERS } from '../const/const';
 import { IUserStatisticData, dataUser } from '../interfaces/interfaces';
@@ -14,7 +10,7 @@ export default function getStatistics(setLoading: React.Dispatch<React.SetStateA
     const response = await fetch(`${USERS}/${userData.userId}/statistics`, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${userData.token}`,
+        Authorization: `Bearer ${userData.token}`,
       },
     });
     setStatisticsOfUser(await response.json());

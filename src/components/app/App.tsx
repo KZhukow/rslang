@@ -1,5 +1,8 @@
 import { createContext, useState } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
+
+import { validToken } from '../global-components/authorization/utils/utils';
+
 import GameLayout from '../global-components/game-layout/game-layout';
 import MainLayout from '../global-components/main-layout/main-layout';
 import About from '../pages/about/about';
@@ -18,7 +21,7 @@ export const AudioPlayCtx = createContext([] as unknown as TAudioPlay);
 export const audioEl = new Audio();
 
 export default function App() {
-  const authorizedInitCtx = useState(true);
+  const authorizedInitCtx = useState(validToken());
   const audioPlayInitCtx = useState('');
 
   return (
