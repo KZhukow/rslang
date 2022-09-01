@@ -54,7 +54,7 @@ a {
   width: 100%;
   margin: 0 3%;
   display: grid;
-  grid-template-columns: auto 1fr auto auto;
+  grid-template-columns: auto 1fr auto auto auto;
   align-items: center;
 }
 
@@ -80,45 +80,6 @@ a {
 
 .logo_img:hover {
   transform: rotate(30deg);
-}
-
-.header_nav {
-  display: flex;
-  justify-content: center;
-  list-style-type: none;
-}
-
-.nav_item {
-  margin: 0 3%;
-}
-
-@media (max-width: 1300px) {
-
-  .nav_item {
-    margin: 0;
-  }
-
-}
-
-@media (max-width: 1080px) {
-
-  .nav_item {
-    display: none;
-  }
-
-}
-
-.nav_link {
-  color: #320259;
-  display: inline-block;
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-transform: capitalize;
-  letter-spacing: 0.1rem;
-  padding: 0.4rem 0.5rem;
-  transition: all 0.3s linear;
-  margin: 0 1.2rem;
-  text-shadow: 2px 2px 3px #ffffff;
 }
 
 .nav_link:hover {
@@ -173,7 +134,66 @@ a {
   text-shadow: 2px 2px 3px rgb(0, 0, 0);
 }
 
-/* ////////////  POPUP1  //////////// */
+@media (min-width: 1080px) {
+
+  .header_nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+  }
+  .nav_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+  }
+  .nav_item {
+    margin: 0 3%;
+  }
+  .nav_link {
+    color: #320259;
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing: 0.1rem;
+    padding: 0.4rem 0.5rem;
+    transition: all 0.3s linear;
+    margin: 0 1.2rem;
+    text-shadow: 2px 2px 3px #ffffff;
+  }
+
+}
+
+@media (max-width: 1300px) {
+
+  .nav_item {
+    margin: 0;
+  }
+
+}
+
+@media (max-width: 1080px) {
+
+  .header {
+    width: 100%;
+    position: fixed;
+    z-index: 200;
+  }
+  .section_start,
+  .about,
+  .error,
+  .games,
+  .tutorialContent,
+  .mainGameWrapper {
+    margin-top: 6rem;
+  }
+
+}
+
+/* ////////////  POPUP  //////////// */
 .modal {
   position: fixed;
   top: 0;
