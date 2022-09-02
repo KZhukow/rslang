@@ -1,3 +1,167 @@
 .game-audio-call {
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper-game-audio-call{
+  padding: 8rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.song-wrapper-call{
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper-words-choise-call {
+  display: flex;
+  justify-content: space-between;
+}
+.wrapper-word-call{
+
+  padding: 3rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.word-call-choise {
+  border: 0.2rem solid yellowgreen;
+  padding-left: 0.4rem;
+}
+.word-call-choise:hover {
+  cursor: pointer;
+  background: floralwhite;
+}
+.wrapper-call-and-answer{
+  display: flex;;
+  justify-content: center;
+  align-items: center;
+  height: 25rem;
+
+}
+.answer-word-call {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25rem;
+  width: 100%;
+}
+
+.card-img-answer-call{
+  width: 50%;
+  height: 260px;
+  background-repeat: round;
+  background-size: cover;
+}
+.answer-right-call-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.answer-word-right-call-wrapper{
+  display: flex;
+  padding: 0 0.2rem;
+}
+.answer-word-right-call-wrapper * {
+  padding: 0 0.2rem;
+}
+/* иконка звука */
+.speakerBtnCallAnswer{
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  fill: black;
+}
+.speakerBtnCall{
+  width: 10rem;
+  height: 10rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  fill: aquamarine;
+}
+.speakerBtnCall:hover,
+.speakerBtnCallAnswer:hover{
+  fill: rgb(255, 255, 255);
+}
+
+ .next-word-call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.next-words-wrapper{
+  cursor: pointer;
+  width: 10rem;
+  height: 3rem;
+  border: 0.1rem;
+  border-radius: 1rem;
+
+}
+.next-button-call-word{
+  width: 100%;
+  height: 100%;
+}
+
+/* группа кнопок при входе в игру с выбором уровня слов */
+.btn-to-select-group {
+  font-size: 24px;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: 0.5s;
+  text-align: center;
+  color: black;
+}
+
+.view-to-select-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 70%;
+  text-align: center;
+  background-color: rgb(25 226 253);
+  padding: 15px 10px;
+  box-shadow: 0 5px 10px 0px black;
+  border-radius: 25px;
+}
+
+.btns-to-select-group {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.call-hidden {
+  display: none;
+}
+.right-answer-call {
+  background: green;
+}
+.lose-answer-call {
+  background: red;
+}
+.tablCallGray {
+  width: 1rem;
+  fill: gray;
+  margin: 0.1rem;
+}
+.tablCallRight {
+  width: 1rem;
+  fill: greenyellow;
+  margin: 0.1rem;
+}
+.tablCallWrong {
+  width: 1rem;
+  fill: red;
+  margin: 0.1rem;
 }
