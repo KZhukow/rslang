@@ -11,11 +11,8 @@ import CallAudioBtn from './render/audio-call-sound';
 import GameResult from '../../global-components/game-layout/game-result';
 import SwitchVolumeAudioSignal from './render/switchVolumeAudioSignal';
 import { audioSignalElCorrect, audioSignalElError, gameResult } from '../sprint/const';
-// import { gameResult } from '../sprint/const';
 
 export default function AudioCall() {
-  // eslint-disable-next-line no-console
-  // console.log(gameResult);
   const [curGroup, setCurGroup] = useState(-1);
   const [loading, setLoading] = useState(true);
   const [wordArr, setWordArr] = useState<IWord[]>([]);
@@ -51,7 +48,6 @@ export default function AudioCall() {
     const target = event.target as HTMLElement;
     setCurGroup(+target.innerHTML - 1);
   }
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   return (
     <div className="game-audio-call" role="presentation">
       {(loading && curGroup !== -1) && (<div className="spinner"><Spinner /></div>)}

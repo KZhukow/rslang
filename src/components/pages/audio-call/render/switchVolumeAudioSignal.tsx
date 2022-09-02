@@ -6,8 +6,8 @@ export default function SwitchVolumeAudioSignal() {
   const [volumeAudioSignal, setVolumeAudioSignal] = useState(true);
   return (
     <div className="mute-btn" onClick={() => switchVolumeAudioSignal(setVolumeAudioSignal)} role="presentation">
-      {volumeAudioSignal && <FaVolumeMute color="gray" size="100%" />}
-      {!volumeAudioSignal && <FaVolumeUp color="gray" size="100%" />}
+      {!volumeAudioSignal && <FaVolumeMute color="gray" size="100%" />}
+      {volumeAudioSignal && <FaVolumeUp color="gray" size="100%" />}
     </div>
   );
 }

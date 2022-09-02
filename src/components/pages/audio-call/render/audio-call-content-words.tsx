@@ -1,17 +1,12 @@
-/* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/jsx-no-comment-textnodes */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable max-len */
-import React, { SyntheticEvent, useEffect, useState } from 'react';
+import React, { SyntheticEvent, useEffect } from 'react';
 import { gameResult } from '../../sprint/const';
 import { playAudioSignal } from '../../sprint/utils';
 import { CardPropWords, IWord } from '../interfaces/interfaces';
 import { findBestSeria, randomNumber, WordsSupportCall } from '../utils/utils';
 
-export default function WordsContentCall({ words, word, wordNum, setWordNum, setbestSeria, bestSeriaArray }: CardPropWords) {
+export default function WordsContentCall(
+  { words, word, wordNum, setWordNum, setbestSeria, bestSeriaArray }: CardPropWords,
+) {
   const arrFiveNumber: Array<number> = [-1, -1, -1, -1, -1];
   const randomNum = Math.floor(Math.random() * arrFiveNumber.length);
   const fiveWords: Array<IWord> = [];
@@ -51,12 +46,10 @@ export default function WordsContentCall({ words, word, wordNum, setWordNum, set
     const soundButton = document.getElementById('song-wrapper-call');
     const answerContent = document.getElementById('answer-word-call');
     if (change) {
-      // console.log('hidden call call');
       soundButton?.classList.add('call-hidden');
       answerContent?.classList.remove('call-hidden');
       NextWordGoCall(change);
     } else {
-      // console.log('hidden call answer');
       soundButton?.classList.remove('call-hidden');
       answerContent?.classList.add('call-hidden');
       NextWordGoCall(change);
@@ -76,7 +69,6 @@ export default function WordsContentCall({ words, word, wordNum, setWordNum, set
   }
 
   function SelectWordsInExercise() {
-    // console.log(22);
     const resultAnswerCall = (bestSeria[wordNum] > 0);
     ChangeViewAnswerSong(false);
     setWordNum(wordNum + 1);
@@ -102,7 +94,6 @@ export default function WordsContentCall({ words, word, wordNum, setWordNum, set
     const idRightWord = `call${word.word}`;
     const { innerHTML, classList, id } = event.target as HTMLElement;
     const sgvId = `svgAmoutWord${wordNum}`;
-    // svgAmoutWord0
     if (openOneChoise && !classList.contains('wrapper-word-call') && innerHTML.slice(1) === rightWord) {
       document.getElementById(`${id}`)?.classList.add('right-answer-call');
       document.getElementById(sgvId)?.classList.remove('tablCallGray');
@@ -123,7 +114,6 @@ export default function WordsContentCall({ words, word, wordNum, setWordNum, set
     }
   }
 
-  // по нажатию на клавиши
   function choiseWordCallKeyboard(event: KeyboardEvent) {
     const rightWord = word.wordTranslate;
     const idRightWord = `call${word.word}`;
@@ -153,7 +143,6 @@ export default function WordsContentCall({ words, word, wordNum, setWordNum, set
     }
   }
 
-  // по нажатии на клавиатуру
   useEffect(() => {
     const onKeypress = (e: KeyboardEvent) => choiseWordCallKeyboard(e);
     document.addEventListener('keypress', (e) => onKeypress(e));
@@ -183,7 +172,7 @@ export default function WordsContentCall({ words, word, wordNum, setWordNum, set
           type="button"
           className="next-words-wrapper"
         >
-          <div className="dont-button-call-word" id="dont-know-call-button" onClick={() => choiseDontKnowButtonCall()}> Не знаю </div>
+          <div className="dont-button-call-word" role="presentation" id="dont-know-call-button" onClick={() => choiseDontKnowButtonCall()}> Не знаю </div>
           <svg className="next-button-call-word call-hidden" onClick={() => SelectWordsInExercise()} id="next-button-call-word" focusable="false" viewBox="0 0 24 24"><path d="M22 12l-4-4v3H3v2h15v3z" /></svg>
         </button>
       </div>

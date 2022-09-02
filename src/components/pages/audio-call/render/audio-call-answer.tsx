@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { useContext } from 'react';
 import { audioEl, AudioPlayCtx } from '../../../app/App';
 import { SvgSongCallAnswer } from '../const/const';
