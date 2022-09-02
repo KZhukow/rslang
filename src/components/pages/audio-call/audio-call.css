@@ -165,3 +165,9 @@
   fill: red;
   margin: 0.1rem;
 }
+.wrapperSwitchVolumeAudioSignalCall{
+  display: flex;
+  margin-bottom: 2rem;
+  justify-content: flex-end;
+  height: 3rem;
+}

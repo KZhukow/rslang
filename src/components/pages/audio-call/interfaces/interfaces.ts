@@ -32,3 +32,11 @@ export interface CardPropWords {
   setbestSeria: React.Dispatch<React.SetStateAction<number[]>>;
   bestSeriaArray: number[];
 }
+
+export interface RestartGameAudiocallProp {
+  setCurGroup: React.Dispatch<React.SetStateAction<number>> | (() => 0),
+  setLoading: React.Dispatch<React.SetStateAction<boolean>> | (() => 0),
+  setWordNum: React.Dispatch<React.SetStateAction<number>> | (() => 0),
+  setBestSeria: React.Dispatch<React.SetStateAction<number[]>> |
+  (() => [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
+}

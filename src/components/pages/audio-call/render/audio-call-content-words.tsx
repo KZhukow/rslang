@@ -7,6 +7,7 @@
 /* eslint-disable max-len */
 import React, { SyntheticEvent, useEffect, useState } from 'react';
 import { gameResult } from '../../sprint/const';
+import { playAudioSignal } from '../../sprint/utils';
 import { CardPropWords, IWord } from '../interfaces/interfaces';
 import { findBestSeria, randomNumber, WordsSupportCall } from '../utils/utils';
 
@@ -68,6 +69,7 @@ export default function WordsContentCall({ words, word, wordNum, setWordNum, set
     document.getElementById(sgvId)?.classList.remove('tablCallGray');
     document.getElementById(sgvId)?.classList.add('tablCallWrong');
     bestSeria[wordNum] = -1;
+    playAudioSignal(false);
     document.getElementById(`${idRightWord}`)?.classList.add('right-answer-call');
     ChangeViewAnswerSong(true);
     openOneChoise = false;
@@ -106,6 +108,7 @@ export default function WordsContentCall({ words, word, wordNum, setWordNum, set
       document.getElementById(sgvId)?.classList.remove('tablCallGray');
       document.getElementById(sgvId)?.classList.add('tablCallRight');
       bestSeria[wordNum] = 1;
+      playAudioSignal(true);
       ChangeViewAnswerSong(true);
       openOneChoise = false;
     } else if (openOneChoise && !classList.contains('wrapper-word-call')) {
@@ -115,6 +118,7 @@ export default function WordsContentCall({ words, word, wordNum, setWordNum, set
       document.getElementById(sgvId)?.classList.add('tablCallWrong');
       bestSeria[wordNum] = -1;
       ChangeViewAnswerSong(true);
+      playAudioSignal(false);
       openOneChoise = false;
     }
   }
@@ -132,6 +136,7 @@ export default function WordsContentCall({ words, word, wordNum, setWordNum, set
           document.getElementById(sgvId)?.classList.remove('tablCallGray');
           document.getElementById(sgvId)?.classList.add('tablCallRight');
           bestSeria[wordNum] = 1;
+          playAudioSignal(true);
           ChangeViewAnswerSong(true);
           openOneChoise = false;
         } else if (openOneChoise) {
@@ -140,6 +145,7 @@ export default function WordsContentCall({ words, word, wordNum, setWordNum, set
           document.getElementById(sgvId)?.classList.remove('tablCallGray');
           document.getElementById(sgvId)?.classList.add('tablCallWrong');
           bestSeria[wordNum] = -1;
+          playAudioSignal(false);
           ChangeViewAnswerSong(true);
           openOneChoise = false;
         }
