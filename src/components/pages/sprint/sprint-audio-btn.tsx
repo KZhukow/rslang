@@ -10,8 +10,8 @@ interface SprintAudioBtnProp {
 export default function SprintAudioBtn({ src }: SprintAudioBtnProp) {
   const [, setAudioState] = useContext(AudioPlayCtx);
   return (
-    <button type="button" className="speakerBtn" onClick={() => gamePlayAudio(src, audioEl, setAudioState)}>
+    <div className="speakerBtn" onClick={() => gamePlayAudio(src, audioEl, setAudioState)} role="presentation">
       <SpeakerBtn />
-    </button>
+    </div>
   );
 }

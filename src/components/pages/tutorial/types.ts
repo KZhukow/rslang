@@ -70,3 +70,9 @@ export interface IWordInGame {
   id: string,
   result: boolean,
 }
+
+export interface IGameResult {
+  score: number,
+  wordInGame: IWordInGame[],
+  firstWordInGame: IWordInGame[],
+}

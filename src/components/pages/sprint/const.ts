@@ -1,5 +1,5 @@
 import { adress } from '../tutorial/const';
-import { IWordInGame, RestartGameSprintProp } from '../tutorial/types';
+import { IGameResult, RestartGameSprintProp } from '../tutorial/types';
 
 export const multipliers = [1, 2, 4, 8];
 export const baseScoreStep = 10;
@@ -20,5 +20,8 @@ export const paramsToRestartSprintGame: RestartGameSprintProp = {
   setVolumeAudioSignal: () => 0,
 };
 
-export const wordInGame: IWordInGame[] = [];
-export const firstWordInGame: IWordInGame[] = [];
+export const gameResult: IGameResult = {
+  score: 0,
+  wordInGame: [],
+  firstWordInGame: [],
+};

@@ -4,6 +4,12 @@
   justify-content: center;
   align-items: center;
 }
+.game-sprint:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.game-sprint:focus-visible {
+  outline: none;
+}
 
 .game-sprint-container {
   display: flex;
@@ -176,6 +182,23 @@
 
 .choice-btn {
   width: 40%;
+  display: flex;
+  justify-content: space-evenly;
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 5px 3px;
+}
+.choice-btn span {
+  width: auto;
+}
+.choice-btn-wrong {
+  background-color: red;
+  border-color: brown;
+}
+.choice-btn-right {
+  background-color: lime;
+  border-color: rgb(1, 204, 68);
 }
 
 .mute-btn {

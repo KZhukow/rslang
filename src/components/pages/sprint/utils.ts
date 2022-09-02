@@ -1,7 +1,7 @@
 import React from 'react';
 import { adress } from '../tutorial/const';
 import { RestartGameSprintProp } from '../tutorial/types';
-import { audioSignalElCorrect, audioSignalElError, paramsToRestartSprintGame, wordInGame } from './const';
+import { audioSignalElCorrect, audioSignalElError, paramsToRestartSprintGame, gameResult } from './const';
 
 export function getNumPages(curNumPage: number[] = []) {
   const arrNum: number[] = [...curNumPage];
@@ -72,7 +72,7 @@ export function restartGameAudioCall() {
 }
 
 export function restartGame(typeGame: boolean) {
-  wordInGame.length = 0;
+  gameResult.wordInGame.length = 0;
   if (typeGame) {
     restartGameSprint(paramsToRestartSprintGame);
   } else {

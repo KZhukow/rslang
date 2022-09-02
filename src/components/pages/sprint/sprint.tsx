@@ -1,7 +1,8 @@
-import { SyntheticEvent, useEffect, useState } from 'react';
+/* eslint-disable prefer-const */
+import React, { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import './sprint.css';
 
-import { FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
+import { FaArrowCircleLeft, FaArrowCircleRight, FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
 import { ReactComponent as Lamp } from './img/lamp.svg';
 import { ReactComponent as Spinner } from '../tutorial/image/spinner.svg';
 import bird1 from './img/bird1.png';
@@ -14,10 +15,14 @@ import { wordsPage } from '../tutorial/const';
 import { IWord } from '../tutorial/types';
 
 import { getNumPages, getWordNum, playAudioSignal, switchVolumeAudioSignal } from './utils';
-import { baseScoreStep, multipliers, audioSignalElCorrect, audioSignalElError, paramsToRestartSprintGame, wordInGame, firstWordInGame } from './const';
+import { baseScoreStep, multipliers, audioSignalElCorrect, audioSignalElError, paramsToRestartSprintGame, gameResult } from './const';
 
 import SprintAudioBtn from './sprint-audio-btn';
 import GameResult from '../../global-components/game-layout/game-result';
+
+// interface IFocusable {
+//   focus: () => void
+// }
 
 export default function Sprint() {
   const [counter, setCounter] = useState(0);
@@ -44,13 +49,15 @@ export default function Sprint() {
       .then((responses) => Promise.all(responses.map((r) => r.json())))
       .then((wordsArr) => setWordArr(wordsArr.flat().sort(() => Math.random() - Math.random())));
     setLoading(false);
-    setCounter(5);
+    setCounter(60);
     setWordTranslateNum(getWordNum);
   }
 
+  const gameContainer = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (curGroup !== -1) {
       fetchWords();
+      (gameContainer.current as HTMLDivElement).focus();
     }
   }, [curGroup]);
 
@@ -58,33 +65,46 @@ export default function Sprint() {
     const target = event.target as HTMLElement;
     setCurGroup(+target.innerHTML - 1);
   }
-  function processingResponse(event: SyntheticEvent) {
-    const nameBtn = (event.target as HTMLElement).innerHTML;
+  function processingResponse(event: SyntheticEvent | React.KeyboardEvent<HTMLDivElement>) {
+    let target = event.target as HTMLElement;
+    let typeAnswer = false;
     let result = true;
-    if ((wordNum === wordTranslateNum && nameBtn === 'Right')
-        || (wordNum !== wordTranslateNum && nameBtn === 'Wrong')) {
-      setScore(score + baseScoreStep * multipliers[birdSeries]);
-      setLampSeries(lampSeries + 1);
-      playAudioSignal(true);
-    } else {
-      setLampSeries(0);
-      if (birdSeries) {
-        setBirdSeries(birdSeries - 1);
+    const namePressBtn = (event as React.KeyboardEvent<HTMLDivElement>).code;
+
+    if ((namePressBtn === undefined || namePressBtn === 'ArrowRight' || namePressBtn === 'ArrowLeft') && (counter > 0 && wordNum < 60)) {
+      if (namePressBtn === undefined) {
+        while (!target.classList.contains('choice-btn')) {
+          target = target.parentElement as HTMLElement;
+        }
+        typeAnswer = target.classList.contains('BTN_RIGHT');
+      } else if (namePressBtn === 'ArrowRight') typeAnswer = true;
+
+      if ((wordNum === wordTranslateNum && typeAnswer)
+          || (wordNum !== wordTranslateNum && !typeAnswer)) {
+        setScore(score + baseScoreStep * multipliers[birdSeries]);
+        setLampSeries(lampSeries + 1);
+        playAudioSignal(true);
+      } else {
+        setLampSeries(0);
+        if (birdSeries) {
+          setBirdSeries(birdSeries - 1);
+        }
+        playAudioSignal(false);
+        result = false;
       }
-      playAudioSignal(false);
-      result = false;
+      setWordNum(wordNum + 1);
+      setWordTranslateNum(getWordNum(wordNum + 1));
+      gameResult.wordInGame.push({
+        audio: wordArr[wordNum].audio,
+        word: wordArr[wordNum].word,
+        transcription: wordArr[wordNum].transcription,
+        wordTranslate: wordArr[wordNum].wordTranslate,
+        id: wordArr[wordNum].id,
+        result,
+      });
     }
-    setWordNum(wordNum + 1);
-    setWordTranslateNum(getWordNum(wordNum + 1));
-    wordInGame.push({
-      audio: wordArr[wordNum].audio,
-      word: wordArr[wordNum].word,
-      transcription: wordArr[wordNum].transcription,
-      wordTranslate: wordArr[wordNum].wordTranslate,
-      id: wordArr[wordNum].id,
-      result,
-    });
   }
+
   function setDefaultLamp() {
     setLampSeries(0);
   }
@@ -108,12 +128,12 @@ export default function Sprint() {
     paramsToRestartSprintGame.setLampSeries = setLampSeries;
     paramsToRestartSprintGame.setBirdSeries = setBirdSeries;
     paramsToRestartSprintGame.setVolumeAudioSignal = setVolumeAudioSignal;
-    wordInGame.length = 0;
+    gameResult.wordInGame.length = 0;
   }, []);
 
   useEffect(() => {
     if (counter === 1) {
-      firstWordInGame[0] = {
+      gameResult.firstWordInGame[0] = {
         audio: wordArr[0].audio,
         word: wordArr[0].word,
         transcription: wordArr[0].transcription,
@@ -124,8 +144,12 @@ export default function Sprint() {
     }
   }, [counter]);
 
+  useEffect(() => {
+    gameResult.score = score;
+  }, [score]);
+
   return (
-    <div className="game-sprint">
+    <div className="game-sprint" onKeyUp={processingResponse} role="presentation" tabIndex={-1} ref={gameContainer}>
       {(loading && curGroup !== -1) && (<div className="spinner"><Spinner /></div>)}
       {
         curGroup === -1 && (
@@ -152,10 +176,10 @@ export default function Sprint() {
             <div className="tools">
               <div className="timer">{counter}</div>
               <div className="score-and-mute">
-                <button type="button" className="mute-btn" onClick={() => switchVolumeAudioSignal(setVolumeAudioSignal)}>
+                <div className="mute-btn" onClick={() => switchVolumeAudioSignal(setVolumeAudioSignal)} role="presentation">
                   {volumeAudioSignal && <FaVolumeMute color="gray" size="100%" />}
                   {!volumeAudioSignal && <FaVolumeUp color="gray" size="100%" />}
-                </button>
+                </div>
                 <div className="score">{score}</div>
               </div>
             </div>
@@ -176,8 +200,14 @@ export default function Sprint() {
               <div className="sprint-eng-word">{wordArr[wordNum].word}</div>
               <div className="sprint-rus-word">{wordArr[wordTranslateNum].wordTranslate}</div>
               <div className="choice-btns">
-                <button type="button" className="choice-btn choice-btn-wrong" onClick={processingResponse}>Wrong</button>
-                <button type="button" className="choice-btn choice-btn-right" onClick={processingResponse}>Right</button>
+                <div className="choice-btn choice-btn-wrong" onClick={processingResponse} role="presentation">
+                  <span><FaArrowCircleLeft /></span>
+                  Wrong
+                </div>
+                <div className="choice-btn choice-btn-right BTN_RIGHT" onClick={processingResponse} role="presentation">
+                  Right
+                  <span><FaArrowCircleRight /></span>
+                </div>
               </div>
             </div>
           </div>
