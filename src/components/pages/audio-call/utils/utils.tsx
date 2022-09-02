@@ -45,3 +45,22 @@ export function WordsSupportCall({ wordWrite, i }: wordProps) {
     </div>
   );
 }
+
+export function findBestSeria(array: number[]) {
+  let max = 0;
+  let counter = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === 1) {
+      counter++;
+      if (i === (array.length - 1)) {
+        if (counter > max) max = counter;
+        counter = 0;
+      }
+    }
+    if (array[i] !== 1) {
+      if (counter > max) max = counter;
+      counter = 0;
+    }
+  }
+  return max;
+}

@@ -6,14 +6,16 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable max-len */
 import React, { SyntheticEvent, useEffect, useState } from 'react';
-import { CardPropWords, IWord, wordProps } from '../interfaces/interfaces';
-import { randomNumber, WordsSupportCall } from '../utils/utils';
+import { gameResult } from '../../sprint/const';
+import { CardPropWords, IWord } from '../interfaces/interfaces';
+import { findBestSeria, randomNumber, WordsSupportCall } from '../utils/utils';
 
-export default function WordsContentCall({ words, word, wordNum, setWordNum }: CardPropWords) {
+export default function WordsContentCall({ words, word, wordNum, setWordNum, setbestSeria, bestSeriaArray }: CardPropWords) {
   const arrFiveNumber: Array<number> = [-1, -1, -1, -1, -1];
-  const randomNum = Math.floor(Math.random() * 5);
+  const randomNum = Math.floor(Math.random() * arrFiveNumber.length);
   const fiveWords: Array<IWord> = [];
   let openOneChoise = true;
+  const bestSeria = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   for (let i = 0; i < arrFiveNumber.length; i += 1) {
     let numberRandom = randomNumber();
     while (arrFiveNumber) {
@@ -64,7 +66,8 @@ export default function WordsContentCall({ words, word, wordNum, setWordNum }: C
     const idRightWord = `call${word.word}`;
     const sgvId = `svgAmoutWord${wordNum}`;
     document.getElementById(sgvId)?.classList.remove('tablCallGray');
-    document.getElementById(sgvId)?.classList.add('tablCallRight');
+    document.getElementById(sgvId)?.classList.add('tablCallWrong');
+    bestSeria[wordNum] = -1;
     document.getElementById(`${idRightWord}`)?.classList.add('right-answer-call');
     ChangeViewAnswerSong(true);
     openOneChoise = false;
@@ -72,9 +75,24 @@ export default function WordsContentCall({ words, word, wordNum, setWordNum }: C
 
   function SelectWordsInExercise() {
     // console.log(22);
+    const resultAnswerCall = (bestSeria[wordNum] > 0);
     ChangeViewAnswerSong(false);
     setWordNum(wordNum + 1);
-    console.log(wordNum);
+    bestSeriaArray[wordNum] = bestSeria[wordNum];
+    if (wordNum === 9) {
+      const bestAnswerSeria = findBestSeria(bestSeriaArray);
+      gameResult.score = bestAnswerSeria;
+    }
+    gameResult.wordInGame.push({
+      audio: word.audio,
+      word: word.word,
+      transcription: word.transcription,
+      wordTranslate: word.wordTranslate,
+      id: word.id,
+      result: resultAnswerCall,
+    });
+    // console.log(gameResult);
+    setbestSeria(bestSeriaArray);
   }
 
   function choiseWordCall(event: SyntheticEvent) {
@@ -87,6 +105,7 @@ export default function WordsContentCall({ words, word, wordNum, setWordNum }: C
       document.getElementById(`${id}`)?.classList.add('right-answer-call');
       document.getElementById(sgvId)?.classList.remove('tablCallGray');
       document.getElementById(sgvId)?.classList.add('tablCallRight');
+      bestSeria[wordNum] = 1;
       ChangeViewAnswerSong(true);
       openOneChoise = false;
     } else if (openOneChoise && !classList.contains('wrapper-word-call')) {
@@ -94,6 +113,7 @@ export default function WordsContentCall({ words, word, wordNum, setWordNum }: C
       document.getElementById(`${idRightWord}`)?.classList.add('right-answer-call');
       document.getElementById(sgvId)?.classList.remove('tablCallGray');
       document.getElementById(sgvId)?.classList.add('tablCallWrong');
+      bestSeria[wordNum] = -1;
       ChangeViewAnswerSong(true);
       openOneChoise = false;
     }
@@ -104,13 +124,14 @@ export default function WordsContentCall({ words, word, wordNum, setWordNum }: C
     const rightWord = word.wordTranslate;
     const idRightWord = `call${word.word}`;
     const sgvId = `svgAmoutWord${wordNum}`;
-    for (let i = 0; i < 5; i += 1) {
-      if (+event.key === i && openOneChoise) {
+    for (let i = 0; i < arrFiveNumber.length; i += 1) {
+      if (+event.key === i + 1 && openOneChoise) {
         const { innerHTML, id } = document.querySelector(`.call${+event.key}`) as HTMLElement;
         if (openOneChoise && innerHTML.slice(1) === rightWord) {
           document.getElementById(`${id}`)?.classList.add('right-answer-call');
           document.getElementById(sgvId)?.classList.remove('tablCallGray');
           document.getElementById(sgvId)?.classList.add('tablCallRight');
+          bestSeria[wordNum] = 1;
           ChangeViewAnswerSong(true);
           openOneChoise = false;
         } else if (openOneChoise) {
@@ -118,6 +139,7 @@ export default function WordsContentCall({ words, word, wordNum, setWordNum }: C
           document.getElementById(`${idRightWord}`)?.classList.add('right-answer-call');
           document.getElementById(sgvId)?.classList.remove('tablCallGray');
           document.getElementById(sgvId)?.classList.add('tablCallWrong');
+          bestSeria[wordNum] = -1;
           ChangeViewAnswerSong(true);
           openOneChoise = false;
         }

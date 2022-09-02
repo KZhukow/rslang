@@ -8,12 +8,28 @@ import { svgAmoutWord0, svgAmoutWord1, svgAmoutWord2, svgAmoutWord3, svgAmoutWor
 import { getNumPages } from './utils/utils';
 import { ReactComponent as Spinner } from '../tutorial/image/spinner.svg';
 import CallAudioBtn from './render/audio-call-sound';
+import GameResult from '../../global-components/game-layout/game-result';
 
 export default function AudioCall() {
+  // export interface IWordInGame {
+  //   audio: string,
+  //   word: string,
+  //   transcription: string,
+  //   wordTranslate: string,
+  //   id: string,
+  //   result: boolean,
+  // }
+
+  // export interface IGameResult {
+  //   score: number,
+  //   wordInGame: IWordInGame[],
+  //   firstWordInGame: IWordInGame[],
+  // }
   const [curGroup, setCurGroup] = useState(-1);
   const [loading, setLoading] = useState(true);
   const [wordArr, setWordArr] = useState<IWord[]>([]);
   const [wordNum, setWordNum] = useState(0);
+  const [bestSeria, setBestSeria] = useState<Array<number>>([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   async function fetchWords() {
     const numPages = getNumPages();
     const response1 = fetch(wordsPage(curGroup, numPages[0]));
@@ -34,7 +50,6 @@ export default function AudioCall() {
     const target = event.target as HTMLElement;
     setCurGroup(+target.innerHTML - 1);
   }
-
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   return (
     <div className="game-audio-call" role="presentation">
@@ -82,12 +97,14 @@ export default function AudioCall() {
             word={wordArr[wordNum]}
             wordNum={wordNum}
             setWordNum={setWordNum}
+            setbestSeria={setBestSeria}
+            bestSeriaArray={bestSeria}
           />
         </div>
       )}
       {
         (!loading && ((wordNum === 10) && curGroup !== -1)) && (
-          1
+          <GameResult />
         )
       }
     </div>

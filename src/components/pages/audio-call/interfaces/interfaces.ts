@@ -29,4 +29,6 @@ export interface CardPropWords {
   word: IWord;
   wordNum: number;
   setWordNum: React.Dispatch<React.SetStateAction<number>>;
+  setbestSeria: React.Dispatch<React.SetStateAction<number[]>>;
+  bestSeriaArray: number[];
 }
