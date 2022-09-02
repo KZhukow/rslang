@@ -50,3 +50,23 @@ export interface CustomLinkProp {
   to: string,
   className: string,
 }
+
+export interface RestartGameSprintProp {
+  setCounter: React.Dispatch<React.SetStateAction<number>> | (() => 0),
+  setCurGroup: React.Dispatch<React.SetStateAction<number>> | (() => 0),
+  setLoading: React.Dispatch<React.SetStateAction<boolean>> | (() => 0),
+  setWordNum: React.Dispatch<React.SetStateAction<number>> | (() => 0),
+  setScore: React.Dispatch<React.SetStateAction<number>> | (() => 0),
+  setLampSeries: React.Dispatch<React.SetStateAction<number>> | (() => 0),
+  setBirdSeries: React.Dispatch<React.SetStateAction<number>> | (() => 0),
+  setVolumeAudioSignal: React.Dispatch<React.SetStateAction<boolean>> | (() => 0),
+}
+
+export interface IWordInGame {
+  audio: string,
+  word: string,
+  transcription: string,
+  wordTranslate: string,
+  id: string,
+  result: boolean,
+}

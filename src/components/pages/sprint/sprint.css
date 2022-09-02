@@ -8,18 +8,22 @@
 .game-sprint-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 5px;
 }
 
 .tools {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: 35px;
+  align-items: center;
+  padding: 5px;
 }
 .score-and-mute {
   display: flex;
   flex-direction: row;
   gap: 20px;
+  align-items: center;
 }
 
 .game-sprint-main-content {
@@ -58,6 +62,49 @@
   width: 40px;
   fill: white;
 }
+.lamp-active {
+  fill: yellow;
+  animation: lamp-animation;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  transform-origin: top;
+  animation-timing-function: cubic-bezier(0.55, 0.06, 0.85, 0.33);
+}
+@keyframes lamp-animation {
+  10% {
+    transform: rotate(25deg);
+  }
+  20% {
+    transform: rotate(-25deg);
+  }
+  30% {
+    transform: rotate(20deg);
+  }
+  40% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  60% {
+    transform: rotate(-15deg);
+  }
+  70% {
+    transform: rotate(10deg);
+  }
+  80% {
+    transform: rotate(-10deg);
+  }
+  90% {
+    transform: rotate(5deg);
+  }
+  95% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
 
 .stick {
   position: absolute;
@@ -69,6 +116,30 @@
 
 .bird {
   z-index: 99;
+  transform: scale(0);
+}
+.bird-active {
+  animation-name: bird-animation;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes bird-animation {
+  0% {
+    transform: scale(0);
+  }
+  25% {
+    transform: scale(0.25);
+  }
+  50% {
+      transform: scale(0.5);
+  }
+  75% {
+      transform: scale(0.75);
+  }
+  100% {
+      transform: scale(1);
+  }
 }
 
 .btn-to-select-group {
@@ -101,4 +172,19 @@
   display: flex;
   flex-direction: row;
   gap: 20px;
+}
+
+.choice-btn {
+  width: 40%;
+}
+
+.mute-btn {
+  background: none;
+  border: none;
+  width: 30px;
+  fill: gray;
+}
+.mute-btn svg:hover {
+  cursor: pointer;
+  fill: darkgray;
 }
