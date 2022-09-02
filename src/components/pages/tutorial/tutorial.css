@@ -50,6 +50,7 @@
   border: none;
   background: none;
   fill: aquamarine;
+  z-index: 123;
 }
 .speakerBtn:hover {
   fill: green;
