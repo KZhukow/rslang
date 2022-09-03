@@ -1,4 +1,6 @@
 import React from 'react';
+import { paramsToRestartAudiocallGame } from '../audio-call/const/const';
+import { RestartGameAudiocallProp } from '../audio-call/interfaces/interfaces';
 import { adress } from '../tutorial/const';
 import { RestartGameSprintProp } from '../tutorial/types';
 import { audioSignalElCorrect, audioSignalElError, paramsToRestartSprintGame, gameResult } from './const';
@@ -66,9 +68,11 @@ export function restartGameSprint(params: RestartGameSprintProp) {
   params.setVolumeAudioSignal(true);
 }
 
-export function restartGameAudioCall() {
-  //
-  // console.log('Функция, которая перезапустит игру Аудио вызов');
+export function restartGameAudioCall(params: RestartGameAudiocallProp) {
+  params.setCurGroup(-1);
+  params.setLoading(true);
+  params.setWordNum(0);
+  params.setBestSeria([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 }
 
 export function restartGame(typeGame: boolean) {
@@ -76,6 +80,6 @@ export function restartGame(typeGame: boolean) {
   if (typeGame) {
     restartGameSprint(paramsToRestartSprintGame);
   } else {
-    restartGameAudioCall();
+    restartGameAudioCall(paramsToRestartAudiocallGame);
   }
 }
