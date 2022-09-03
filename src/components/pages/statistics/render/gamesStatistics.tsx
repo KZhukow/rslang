@@ -5,20 +5,20 @@ import Procent from '../utils/utils';
 export function GamesStatistics({ title, statisticsGame }: statisticsProps) {
   const procent = Procent(statisticsGame.allRightofDay, statisticsGame.allWrongofDay);
   return (
-    <div className="wrapperStatisticsGame">
-      <div className="wrapperStatisticsGameTitle">{title}</div>
-      <div className="gamesStatistics">
+    <div className="game_statistic_content">
+      <div className="game_statistic_title">{title}</div>
+      <div className="game_statistic">
         {learnSvg}
         {learnWords}
         {statisticsGame.newWordsOfDay.length}
       </div>
-      <div className="gamesStatistics">
+      <div className="game_statistic">
         {procentSvg}
         {procentRight}
         {procent}
         %
       </div>
-      <div className="gamesStatistics">
+      <div className="game_statistic">
         {strictSvg}
         {strick}
         {statisticsGame.bestSeries}
@@ -30,31 +30,31 @@ export function GamesStatistics({ title, statisticsGame }: statisticsProps) {
 export function AllStatisticsOfDay({ optional }: IUserStatisticData) {
   const procent = Procent(optional.dayStatistic.allRightofDay, optional.dayStatistic.allWrongofDay);
   return (
-    <div className="wrapperAllStatistics">
-      <div className="wrapperStatisticsTitle">{titleAll}</div>
-      <div className="wrapperStatisticAll">
-        <div className="statisticAll">
-          <div className="statisticAllAmount">
+    <div className="all_statistics">
+      <h2 className="all_statistics_title">{titleAll}</h2>
+      <div className="all_statistics_content">
+        <div className="all_statistic">
+          <div className="all_statistic_amount">
             {(optional.dayStatistic.newWordsOfDay as Array<string>).length}
           </div>
-          <div className="statisticAllDiscription">
+          <div className="all_statistic_description">
             {newWordDay}
           </div>
         </div>
-        <div className="statisticAll">
-          <div className="statisticAllAmount">
+        <div className="all_statistic">
+          <div className="all_statistic_amount">
             {optional.dayStatistic.learnedWords}
           </div>
-          <div className="statisticAllDiscription">
+          <div className="all_statistic_description">
             {learnWordDay}
           </div>
         </div>
-        <div className="statisticAll">
-          <div className="statisticAllAmount">
+        <div className="all_statistic">
+          <div className="all_statistic_amount">
             {procent}
             %
           </div>
-          <div className="statisticAllDiscription">
+          <div className="all_statistic_description">
             {procentAnswerOfDay}
           </div>
         </div>

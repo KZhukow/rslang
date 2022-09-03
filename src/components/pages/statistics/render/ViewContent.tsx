@@ -6,9 +6,9 @@ import GrafStatictics from './grafStatistics';
 export default function ViewAuthorize({ statisticsOfUser }: PropsAuthorize) {
   const { optional } = statisticsOfUser;
   return (
-    <main className="main">
-      <div className="mainGame">
-        <div className="mainGameWrapper">
+    <main className="statistic_page">
+      <div className="authorized_container">
+        <div className="games_statistic">
           {statisticsOfUser && (
             <GamesStatistics
               title={nameGameSprint}
@@ -23,8 +23,8 @@ export default function ViewAuthorize({ statisticsOfUser }: PropsAuthorize) {
           )}
         </div>
         {statisticsOfUser && <AllStatisticsOfDay optional={optional} />}
-        <div className="mainGameWrapperGrafic">
-          <div className="wrapperGraf">
+        <div className="game_statistic_graphics">
+          <div className="graph_content">
             {statisticsOfUser && (
             <GrafStatictics
               title={grafTitleOne}
@@ -33,7 +33,7 @@ export default function ViewAuthorize({ statisticsOfUser }: PropsAuthorize) {
             />
             )}
           </div>
-          <div className="wrapperGraf">
+          <div className="graph_content">
             {statisticsOfUser && (
             <GrafStatictics
               title={grafTitleTwo}

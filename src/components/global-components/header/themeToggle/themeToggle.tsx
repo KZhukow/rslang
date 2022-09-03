@@ -29,6 +29,14 @@ export default function ThemeToggle() {
     document.querySelectorAll('.form_btn')!.forEach((item) => {
       item.classList.toggle('dark_form_btn');
     });
+    if (document.querySelector('.game_statistic_content')) {
+      document.querySelectorAll('.game_statistic_content')!.forEach((item) => {
+        item.classList.toggle('dark_game_statistic_content');
+      });
+    }
+    if (document.querySelector('.all_statistics')) {
+      document.querySelector('.all_statistics')!.classList.toggle('dark_all_statistics');
+    }
   }
 
   return (
