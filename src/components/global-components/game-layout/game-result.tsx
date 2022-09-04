@@ -7,6 +7,7 @@ import { AuthorizedCtx } from '../../app/App';
 import { ReactComponent as Spinner } from '../../pages/tutorial/image/spinner.svg';
 import { createUserWords, getUserWords, updateUserWords } from '../../pages/sprint/fetch';
 import { IOldWordsInfo, IUserWordInfo } from '../../pages/tutorial/types';
+import { saveStatisicsGame } from '../../pages/statistics/fetch/getOptionsUser';
 
 export default function GameResult() {
   const typeGame = !!useMatch('games/sprint');
@@ -35,7 +36,8 @@ export default function GameResult() {
     const studyUserWordsUpdate = userWordsUpdate.filter((word) => word.difficulty === 'study');
     // Разница по количеству слов
     const amounNewStudyWords = studyUserWordsUpdate.length - studyUserWords.length;
-    console.log(amounNewStudyWords);
+    saveStatisicsGame(typeGame, newWords, amounNewStudyWords);
+    // console.log(amounNewStudyWords);
     setLoading(false);
   }
   useEffect(() => {

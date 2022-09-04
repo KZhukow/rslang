@@ -1,8 +1,8 @@
-import { learnSvg, learnWords, procentSvg, procentRight, strictSvg, strick, titleAll, newWordDay, learnWordDay, procentAnswerOfDay } from '../const/const';
+import { learnSvg, learnWords, procentSvg, procentRight, strictSvg, strick, titleAll, newWordDay, learnWordDay, procentAnswerOfDay, strick2 } from '../const/const';
 import { statisticsProps, IUserStatisticData } from '../interfaces/interfaces';
 import Procent from '../utils/utils';
 
-export function GamesStatistics({ title, statisticsGame }: statisticsProps) {
+export function GamesStatisticsAudiocall({ title, statisticsGame }: statisticsProps) {
   const procent = Procent(statisticsGame.allRightofDay, statisticsGame.allWrongofDay);
   return (
     <div className="wrapperStatisticsGame">
@@ -10,7 +10,7 @@ export function GamesStatistics({ title, statisticsGame }: statisticsProps) {
       <div className="gamesStatistics">
         {learnSvg}
         {learnWords}
-        {statisticsGame.newWordsOfDay.length}
+        {statisticsGame.newWordsOfDay}
       </div>
       <div className="gamesStatistics">
         {procentSvg}
@@ -27,6 +27,34 @@ export function GamesStatistics({ title, statisticsGame }: statisticsProps) {
   );
 }
 
+export function GamesStatisticsSprint({ title, statisticsGame }: statisticsProps) {
+  if (!statisticsGame.score) {
+    statisticsGame.score = 0;
+  }
+  const procent = Procent(statisticsGame.allRightofDay, statisticsGame.allWrongofDay);
+  return (
+    <div className="wrapperStatisticsGame">
+      <div className="wrapperStatisticsGameTitle">{title}</div>
+      <div className="gamesStatistics">
+        {learnSvg}
+        {learnWords}
+        {statisticsGame.newWordsOfDay}
+      </div>
+      <div className="gamesStatistics">
+        {procentSvg}
+        {procentRight}
+        {procent}
+        %
+      </div>
+      <div className="gamesStatistics">
+        {strictSvg}
+        {strick2}
+        {statisticsGame.score}
+      </div>
+    </div>
+  );
+}
+
 export function AllStatisticsOfDay({ optional }: IUserStatisticData) {
   const procent = Procent(optional.dayStatistic.allRightofDay, optional.dayStatistic.allWrongofDay);
   return (
@@ -35,7 +63,7 @@ export function AllStatisticsOfDay({ optional }: IUserStatisticData) {
       <div className="wrapperStatisticAll">
         <div className="statisticAll">
           <div className="statisticAllAmount">
-            {(optional.dayStatistic.newWordsOfDay as Array<string>).length}
+            {(optional.dayStatistic.newWordsOfDay)}
           </div>
           <div className="statisticAllDiscription">
             {newWordDay}
