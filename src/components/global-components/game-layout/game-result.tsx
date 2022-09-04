@@ -15,6 +15,8 @@ export default function GameResult() {
   async function updateUserWord() {
     setLoading(true);
     const userWords = await getUserWords();
+    // Изученные слова до игры
+    const studyUserWords = userWords.filter((word) => word.difficulty === 'study');
     const userWordsID = userWords.map((a) => a.optional.id);
     const newWords = gameResult.wordInGame.length
       ? gameResult.wordInGame.filter((a) => !userWordsID.includes(a.id))
@@ -28,6 +30,12 @@ export default function GameResult() {
     }));
     await createUserWords(newWords);
     await updateUserWords(oldWordsInfo);
+    const userWordsUpdate = await getUserWords();
+    // Изученные слова после игры
+    const studyUserWordsUpdate = userWordsUpdate.filter((word) => word.difficulty === 'study');
+    // Разница по количеству слов
+    const amounNewStudyWords = studyUserWordsUpdate.length - studyUserWords.length;
+    console.log(amounNewStudyWords);
     setLoading(false);
   }
   useEffect(() => {

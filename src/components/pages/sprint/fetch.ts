@@ -43,3 +43,10 @@ export async function updateUserWords(oldWordsInfo: IOldWordsInfo[]) {
   }));
   await Promise.all(requests).then();
 }
+
+export async function getStudyWordsUser() {
+  const userData: dataUser = JSON.parse(localStorage.getItem('userData') as string);
+  const request = await fetch(`${adress}users/${userData.userId}/aggregatedWords?filter={"userWord.difficulty":"study"}`);
+  const studyWords = await request.json();
+  return studyWords;
+}

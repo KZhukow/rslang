@@ -28,10 +28,11 @@ export const getUpdateWordOptional = (result: boolean, info: IUserWordInfo): str
   if (info.difficulty === 'hard') {
     if (curSeries < 5) difficulty = 'hard';
     else if (curSeries === 5) difficulty = 'study';
-  } else if (info.difficulty === 'none' && curSeries >= 3) {
+  } else if (info.difficulty === 'none' && curSeries === 3) {
     difficulty = 'study';
-  } else if (info.difficulty === 'study' && curSeries === 0) {
-    difficulty = 'none';
+  } else if (info.difficulty === 'study') {
+    if (curSeries === 0) difficulty = 'none';
+    else if (curSeries >= 3) difficulty = 'study';
   }
   const counterRight = result ? info.optional.counterRight + 1 : info.optional.counterRight;
   const counterWrong = result ? info.optional.counterWrong : info.optional.counterWrong + 1;
