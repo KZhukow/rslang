@@ -118,7 +118,5 @@ export async function saveStatisicsGame(
     allTimeStatistic.daysProgress.push(dayStatistic);
   }
   delete getDataUser.id;
-  // eslint-disable-next-line no-console
-  console.log(getDataUser);
   await upsertOptionsUser(getDataUser);
 }
