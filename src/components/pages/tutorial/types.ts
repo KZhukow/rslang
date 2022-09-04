@@ -76,3 +76,20 @@ export interface IGameResult {
   wordInGame: IWordInGame[],
   firstWordInGame: IWordInGame[],
 }
+
+export interface IWordOptional {
+  counterRight: number,
+  counterWrong: number,
+  curSeries: number,
+  id: string,
+}
+
+export interface IUserWordInfo {
+  difficulty: 'hard' | 'study' | 'none',
+  optional: IWordOptional,
+}
+
+export interface IOldWordsInfo {
+  result: boolean,
+  info: IUserWordInfo,
+}
