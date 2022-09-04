@@ -1,4 +1,3 @@
-/* eslint-disable prefer-const */
 import React, { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import './sprint.css';
 
@@ -19,10 +18,6 @@ import { baseScoreStep, multipliers, audioSignalElCorrect, audioSignalElError, p
 
 import SprintAudioBtn from './sprint-audio-btn';
 import GameResult from '../../global-components/game-layout/game-result';
-
-// interface IFocusable {
-//   focus: () => void
-// }
 
 export default function Sprint() {
   const [counter, setCounter] = useState(0);

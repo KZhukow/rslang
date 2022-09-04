@@ -1,11 +1,45 @@
+import { useContext, useEffect, useState } from 'react';
+import { useMatch } from 'react-router-dom';
 import { gameResult } from '../../pages/sprint/const';
 import RowGameResult from './row-game-result';
 
+import { AuthorizedCtx } from '../../app/App';
+import { ReactComponent as Spinner } from '../../pages/tutorial/image/spinner.svg';
+import { createUserWords, getUserWords, updateUserWords } from '../../pages/sprint/fetch';
+import { IOldWordsInfo, IUserWordInfo } from '../../pages/tutorial/types';
+
 export default function GameResult() {
+  const typeGame = !!useMatch('games/sprint');
+  const [authorized] = useContext(AuthorizedCtx);
+  const [loading, setLoading] = useState(false);
+  async function updateUserWord() {
+    setLoading(true);
+    const userWords = await getUserWords();
+    const userWordsID = userWords.map((a) => a.optional.id);
+    const newWords = gameResult.wordInGame.length
+      ? gameResult.wordInGame.filter((a) => !userWordsID.includes(a.id))
+      : gameResult.firstWordInGame.filter((a) => !userWordsID.includes(a.id));
+    const oldWords = gameResult.wordInGame.length
+      ? gameResult.wordInGame.filter((a) => userWordsID.includes(a.id))
+      : gameResult.firstWordInGame.filter((a) => userWordsID.includes(a.id));
+    const oldWordsInfo: IOldWordsInfo[] = oldWords.map((word) => ({
+      result: word.result,
+      info: userWords.find((userWord) => userWord.optional.id === word.id) as IUserWordInfo,
+    }));
+    await createUserWords(newWords);
+    await updateUserWords(oldWordsInfo);
+    setLoading(false);
+  }
+  useEffect(() => {
+    if (authorized) {
+      updateUserWord();
+    }
+  }, []);
   return (
     <div className="game-result">
+      {loading && (<div className="spinner"><Spinner /></div>)}
       <h2 className="game-result-title">Game Result</h2>
-      <p>{`Score: ${gameResult.score}`}</p>
+      <p>{`${typeGame ? 'Score' : 'Best series'}: ${gameResult.score}`}</p>
       <div className="game-result-table">
         {
         gameResult.wordInGame.length
