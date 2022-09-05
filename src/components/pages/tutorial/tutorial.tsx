@@ -4,7 +4,8 @@ import './tutorial.css';
 import { ReactComponent as OnePageArrow } from './image/one-page-arrow.svg';
 import { ReactComponent as AllPageArrow } from './image/all-page-arrow.svg';
 import CustomBtnLink from './custom-btn-link';
-import { ThemeCtx } from '../../app/App';
+
+import { AuthorizedCtx, ThemeCtx } from '../../app/App';
 
 interface ITutorialParams {
   group: string,
@@ -26,6 +27,8 @@ export default function TutorialContent() {
   const prevPage = curPage <= 1 ? 1 : curPage - 1;
 
   const navigate = useNavigate();
+
+  const [authorized] = useContext(AuthorizedCtx);
 
   function switchPageInput(e: React.FocusEvent<HTMLInputElement, Element>) {
     e.preventDefault();
@@ -55,30 +58,32 @@ export default function TutorialContent() {
         <Outlet />
       </div>
       <div className="controllers">
-        <div className="pagination">
-          <Link to={`../glossary/${group}/1`} className="pagination-btn first-page-arr">
-            <AllPageArrow />
-          </Link>
-          <Link to={`../glossary/${group}/${prevPage}`} className="pagination-btn">
-            <OnePageArrow />
-          </Link>
-          <input type="number" placeholder={`${page}/30`} className="num-page" onBlur={switchPageInput} />
-          <Link to={`../glossary/${group}/${nextPage}`} className="pagination-btn next-page-arr">
-            <OnePageArrow />
-          </Link>
-          <Link to={`../glossary/${group}/30`} className="pagination-btn last-page-arr">
-            <AllPageArrow />
-          </Link>
-        </div>
+        {+group !== 7 && (
+          <div className="pagination">
+            <Link to={`../glossary/${group}/1`} className="pagination-btn first-page-arr">
+              <AllPageArrow />
+            </Link>
+            <Link to={`../glossary/${group}/${prevPage}`} className="pagination-btn">
+              <OnePageArrow />
+            </Link>
+            <input type="number" placeholder={`${page}/30`} className="num-page" onBlur={switchPageInput} />
+            <Link to={`../glossary/${group}/${nextPage}`} className="pagination-btn next-page-arr">
+              <OnePageArrow />
+            </Link>
+            <Link to={`../glossary/${group}/30`} className="pagination-btn last-page-arr">
+              <AllPageArrow />
+            </Link>
+          </div>
+        )}
         <div className="group-btns">
           <CustomBtnLink to={`../glossary/1/${+group === 1 ? curPage : 1}`} className={`group-btn ${backGroundBtn[0]}`}>1</CustomBtnLink>
           <CustomBtnLink to={`../glossary/2/${+group === 2 ? curPage : 1}`} className={`group-btn ${backGroundBtn[1]}`}>2</CustomBtnLink>
           <CustomBtnLink to={`../glossary/3/${+group === 3 ? curPage : 1}`} className={`group-btn ${backGroundBtn[2]}`}>3</CustomBtnLink>
           <CustomBtnLink to={`../glossary/4/${+group === 4 ? curPage : 1}`} className={`group-btn ${backGroundBtn[3]}`}>4</CustomBtnLink>
           <CustomBtnLink to={`../glossary/5/${+group === 5 ? curPage : 1}`} className={`group-btn ${backGroundBtn[4]}`}>5</CustomBtnLink>
-          <CustomBtnLink to={`../glossary/6/${+group === 6 ? curPage : 1}`} className={`group-btn ${backGroundBtn[5]}`}>6</CustomBtnLink>
+          <CustomBtnLink to={`../glossary/6/${+group === 6 ? curPage : 1}`} className={`group-btn ${backGroundBtn[5]}`}>6</CustomBtnLink>  
         </div>
-        <button type="button" className="btn difficult_btn">Difficult words</button>
+        {authorized && <CustomBtnLink to="../glossary/7/1" className="btn difficult_btn">Difficult words</CustomBtnLink>}
       </div>
     </div>
   );

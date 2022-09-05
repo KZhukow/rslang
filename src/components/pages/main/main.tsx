@@ -1,5 +1,6 @@
 import './main.css';
 import { Link } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
 import KZhukow from '../../../assets/images/KZhukow.png';
 import Lissa from '../../../assets/images/Lissa.png';
 import Yamarauder from '../../../assets/images/yamarauder.png';
@@ -7,7 +8,14 @@ import glossary from '../../../assets/images/glossary.png';
 import games from '../../../assets/images/games.png';
 import statistic from '../../../assets/images/statistic.png';
 
+import { AuthorizedCtx } from '../../app/App';
+import { viewButtonLogin } from '../../global-components/authorization/utils/utils';
+
 export default function Main() {
+  const [authrize] = useContext(AuthorizedCtx);
+  useEffect(() => {
+    viewButtonLogin(authrize);
+  }, []);
   return (
     <div id="mainPage">
       <main className="main">

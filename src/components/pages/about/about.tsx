@@ -1,9 +1,16 @@
 import './about.css';
+import { useContext, useEffect } from 'react';
 import KZhukow from '../../../assets/images/KZhukow.png';
 import Lissa from '../../../assets/images/Lissa.png';
 import Yamarauder from '../../../assets/images/yamarauder.png';
+import { AuthorizedCtx } from '../../app/App';
+import { viewButtonLogin } from '../../global-components/authorization/utils/utils';
 
 export default function About() {
+  const [authrize] = useContext(AuthorizedCtx);
+  useEffect(() => {
+    viewButtonLogin(authrize);
+  }, []);
   return (
     <div id="aboutPage">
       <main className="about">

@@ -1,9 +1,16 @@
 import './games.css';
 import { Link } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
 import listening from '../../../assets/images/headphone.png';
 import sprint from '../../../assets/images/сhronometer.png';
+import { viewButtonLogin } from '../../global-components/authorization/utils/utils';
+import { AuthorizedCtx } from '../../app/App';
 
 export default function Games() {
+  const [authrize] = useContext(AuthorizedCtx);
+  useEffect(() => {
+    viewButtonLogin(authrize);
+  }, []);
   return (
     <div id="gamesPage">
       <main className="games">

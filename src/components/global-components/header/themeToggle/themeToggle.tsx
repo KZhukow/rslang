@@ -9,6 +9,7 @@ export default function ThemeToggle() {
 
   function themeMode() {
     setTheme((themePower) => !themePower);
+
     document.querySelector('.light')!.classList.toggle('hidden');
     document.querySelector('.dark')!.classList.toggle('hidden');
     document.querySelectorAll('header')!.forEach((item) => {

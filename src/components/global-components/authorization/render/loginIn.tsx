@@ -3,6 +3,7 @@ import './form.css';
 import { BiHide, BiShow } from 'react-icons/bi';
 import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { AuthorizedCtx } from '../../../app/App';
 import { errorLogin } from '../const/const';
 import { AuthorizeUser } from '../fetch/fetch';
@@ -10,6 +11,8 @@ import { closeDivError, popupClose, viewButtonLogin } from '../utils/utils';
 import { ErrorDiv } from './errorMessage';
 
 export default function LoginIn() {
+  const navigate = useNavigate();
+
   const [, setAuthrize] = useContext(AuthorizedCtx);
   const [showPassword, setShowPassword] = useState(true);
   type FormValues = {
@@ -47,6 +50,7 @@ export default function LoginIn() {
       closeDivError(divError);
     }
     submitButtonLogin.disabled = false;
+    navigate('../');
   };
 
   return (

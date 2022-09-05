@@ -17,7 +17,7 @@ import TutorialContent from '../pages/tutorial/tutorial';
 import { TAuthorizedCtx, TAudioPlay } from '../pages/tutorial/types';
 
 export const AuthorizedCtx = createContext([] as unknown as TAuthorizedCtx);
-export const ThemeCtx = createContext(([] as unknown as TAuthorizedCtx));
+export const ThemeCtx = createContext([] as unknown as TAuthorizedCtx);
 export const AudioPlayCtx = createContext([] as unknown as TAudioPlay);
 export const audioEl = new Audio();
 

@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import './form.css';
 import { BiHide, BiShow } from 'react-icons/bi';
 import { useContext, useState } from 'react';
@@ -10,6 +11,8 @@ import { errorEmail, errorLogin } from '../const/const';
 import { ErrorDiv, ErrorDivEmail } from './errorMessage';
 
 export default function Registration() {
+  const navigate = useNavigate();
+
   const [, setAuthrize] = useContext(AuthorizedCtx);
   const [showPassword, setShowPassword] = useState(true);
   type FormValues = {
@@ -55,6 +58,7 @@ export default function Registration() {
       closeDivError(divError);
     }
     submitButtonReg.disabled = false;
+    navigate('../');
   };
 
   return (

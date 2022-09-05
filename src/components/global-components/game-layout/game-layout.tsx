@@ -1,7 +1,6 @@
 import './game-layout.css';
 import { Outlet } from 'react-router-dom';
 import GameFooter from './game-footer';
-import GameResult from './game-result';
 
 export default function GameLayout() {
   return (
@@ -10,7 +9,6 @@ export default function GameLayout() {
         <Outlet />
         <GameFooter />
       </div>
-      <GameResult />
     </div>
   );
 }
