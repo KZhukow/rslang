@@ -6,7 +6,6 @@ import { IUserStatisticData, dataUser } from '../interfaces/interfaces';
 
 export default function getStatistics() {
   const [authrize] = useContext(AuthorizedCtx);
-  viewButtonLogin(authrize);
   const [loading, setLoading] = useState(false);
   const [statisticsOfUser, setStatisticsOfUser] = useState<IUserStatisticData>();
   const userData: dataUser = JSON.parse(localStorage.getItem('userData') as string);
@@ -29,6 +28,7 @@ export default function getStatistics() {
 
   useEffect(() => {
     getStatisticsOfUser();
+    viewButtonLogin(authrize);
   }, []);
   return { loading, statisticsOfUser, authrize };
 }

@@ -57,6 +57,7 @@ export function GamesStatisticsSprint({ title, statisticsGame }: statisticsProps
 
 export function AllStatisticsOfDay({ optional }: IUserStatisticData) {
   const procent = Procent(optional.dayStatistic.allRightofDay, optional.dayStatistic.allWrongofDay);
+  if (optional.dayStatistic.learnedWords < 0) optional.dayStatistic.learnedWords = 0;
   return (
     <div className="wrapperAllStatistics">
       <div className="wrapperStatisticsTitle">{titleAll}</div>

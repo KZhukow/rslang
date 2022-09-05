@@ -38,6 +38,7 @@ function addNextDay(statisticsOfUser: IUserStatisticData) {
 
   return dataView2 === dataView;
 }
+
 function rightWrongAnswer(position: IdayStatistic | IGamesStatistic) {
   for (let i = 0; i < gameResult.wordInGame.length; i += 1) {
     if (gameResult.wordInGame[i].result) {
@@ -58,10 +59,11 @@ export async function getWordsUser() {
   }).catch();
   return response.status !== 200 ? { success: false } : { ...(await response.json()) };
 }
+
 export async function saveStatisicsGame(
   game: boolean,
   newWordArray: IWordInGame[],
-  amounNewStudyWords: number,
+  amountNewStudyWords: number,
 ) {
   const getDataUser: IUserStatisticData = await getOptionsUser();
   const { audioCall, sprint, dayStatistic, allTimeStatistic } = getDataUser.optional;
@@ -103,7 +105,10 @@ export async function saveStatisicsGame(
   if (addNextDay(getDataUser)) {
     rightWrongAnswer(dayStatistic);
     dayStatistic.newWordsOfDay += newWordArray.length;
-    dayStatistic.learnedWords += amounNewStudyWords;
+    dayStatistic.learnedWords += amountNewStudyWords;
+    if (dayStatistic.learnedWords < 0) {
+      dayStatistic.learnedWords = 0;
+    }
     allTimeStatistic.daysProgress.pop();
     allTimeStatistic.daysProgress.push(dayStatistic);
   } else {
@@ -113,8 +118,70 @@ export async function saveStatisicsGame(
     dayStatistic.newWordsOfDay = 0;
     rightWrongAnswer(dayStatistic);
     dayStatistic.newWordsOfDay += newWordArray.length;
-    dayStatistic.learnedWords += amounNewStudyWords;
+    dayStatistic.learnedWords += amountNewStudyWords;
+    if (dayStatistic.learnedWords < 0) {
+      dayStatistic.learnedWords = 0;
+    }
     dayStatistic.date = new Date();
+    allTimeStatistic.daysProgress.push(dayStatistic);
+  }
+  delete getDataUser.id;
+  await upsertOptionsUser(getDataUser);
+}
+
+export async function upsertStatiscticGame() {
+  const getDataUser: IUserStatisticData = await getOptionsUser();
+  const { audioCall, sprint, dayStatistic, allTimeStatistic } = getDataUser.optional;
+  if (!addNextDay(getDataUser)) {
+    audioCall.allRightofDay = 0;
+    audioCall.allWrongofDay = 0;
+    audioCall.bestSeries = 0;
+    audioCall.newWordsOfDay = 0;
+    sprint.allRightofDay = 0;
+    sprint.allWrongofDay = 0;
+    sprint.score = 0;
+    sprint.newWordsOfDay = 0;
+    dayStatistic.allRightofDay = 0;
+    dayStatistic.allWrongofDay = 0;
+    dayStatistic.learnedWords = 0;
+    dayStatistic.newWordsOfDay = 0;
+    dayStatistic.date = new Date();
+    allTimeStatistic.daysProgress.push(dayStatistic);
+    delete getDataUser.id;
+    await upsertOptionsUser(getDataUser);
+  }
+}
+
+export async function updateUserStatistic(newWord: boolean, learnedWord: boolean) {
+  const getDataUser: IUserStatisticData = await getOptionsUser();
+  const { dayStatistic, allTimeStatistic } = getDataUser.optional;
+
+  if (addNextDay(getDataUser)) {
+    if (newWord) {
+      dayStatistic.newWordsOfDay += 1;
+      dayStatistic.learnedWords += 1;
+    } else if (learnedWord) {
+      dayStatistic.learnedWords += 1;
+    } else {
+      dayStatistic.learnedWords -= 1;
+      if (dayStatistic.learnedWords < 0) {
+        dayStatistic.learnedWords = 0;
+      }
+    }
+    allTimeStatistic.daysProgress.pop();
+    allTimeStatistic.daysProgress.push(dayStatistic);
+  } else {
+    if (newWord) {
+      dayStatistic.newWordsOfDay += 1;
+      dayStatistic.learnedWords += 1;
+    } else if (learnedWord) {
+      dayStatistic.learnedWords += 1;
+    } else {
+      dayStatistic.learnedWords -= 1;
+      if (dayStatistic.learnedWords < 0) {
+        dayStatistic.learnedWords = 0;
+      }
+    }
     allTimeStatistic.daysProgress.push(dayStatistic);
   }
   delete getDataUser.id;
