@@ -95,7 +95,7 @@ export async function getPageWords(group: number, page: number): Promise<IWord[]
 
 export async function getDifficultWords() {
   const userData: dataUser = JSON.parse(localStorage.getItem('userData') as string);
-  const request = await fetch(`${adress}users/${userData.userId}/aggregatedWords?filter={"userWord.difficulty":"hard"}`, {
+  const request = await fetch(`${adress}users/${userData.userId}/aggregatedWords?wordsPerPage=3600&filter={"userWord.difficulty":"hard"}`, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${userData.token}`,

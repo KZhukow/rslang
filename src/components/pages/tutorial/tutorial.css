@@ -129,6 +129,7 @@ b {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
 }
 
 .pagination {
@@ -515,4 +516,8 @@ b {
     grid-template-columns: 1fr;
   }
 
+}
+
+.game-link-img-glossary {
+  height: 60px;
 }
