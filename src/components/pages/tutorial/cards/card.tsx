@@ -18,7 +18,7 @@ export default function Card({ word, setCounter }: CardProp) {
   const [userWordState, setUserWordState] = useState((word as IPaginatedResults).userWord);
   const [visibility, setVisibility] = useState(true);
   return (
-    <div className={`card-container ${visibility ? '' : 'card-container-hidden'}`}>
+    <div className={`card_container ${visibility ? '' : 'card-container-hidden'}`}>
       {authorized && (
         <ModifierBtns
           userWord={(word as IPaginatedResults).userWord}
@@ -34,10 +34,11 @@ export default function Card({ word, setCounter }: CardProp) {
           wrong={userWordState.optional.counterWrong}
         />
       )}
-      <div className="card-img" style={{ backgroundImage: bgCard }}>
-        <div className="card-gradient">
-          <p className="card-title">{ word.word }</p>
-          <div className="card-subtitle">
+      <div className="card_img" style={{ backgroundImage: bgCard }}>
+        <div className="card_gradient">
+          <p className="card_title">{ word.word }</p>
+          <div className="card_subtitle">
+
             <span>{ word.transcription }</span>
             <span>{ word.wordTranslate }</span>
             <AudioBtns
@@ -47,10 +48,12 @@ export default function Card({ word, setCounter }: CardProp) {
           </div>
         </div>
       </div>
-      <p dangerouslySetInnerHTML={{ __html: word.textMeaning }} />
-      <p>{ word.textMeaningTranslate }</p>
-      <p dangerouslySetInnerHTML={{ __html: word.textExample }} />
-      <p>{ word.textExampleTranslate }</p>
+      <div className="card_description">
+        <p dangerouslySetInnerHTML={{ __html: word.textMeaning }} />
+        <p>{ word.textMeaningTranslate }</p>
+        <p dangerouslySetInnerHTML={{ __html: word.textExample }} className="card_text" />
+        <p>{ word.textExampleTranslate }</p>
+      </div>
     </div>
   );
 }

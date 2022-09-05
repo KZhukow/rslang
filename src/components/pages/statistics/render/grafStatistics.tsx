@@ -14,16 +14,16 @@ export default function GrafStatictics(
       a.date = `${`${a.date}`.slice(8, 10)}.${`${a.date}`.slice(5, 7)}.${`${a.date}`.slice(0, 4)}`;
     }
   });
-  // в lineChart  - размеры самого графика 700/400;
+
   return (
-    <div className="graficStatistics">
-      <p className="nameGrafic">
+    <div className="statistics_graph">
+      <h3 className="graphic_title">
         {title}
-      </p>
-      <div className="graficStatisticsView">
-        <p className="nameGraficY">
+      </h3>
+      <div className="graphic_content">
+        <h5 className="graphic_y_line">
           {titleY}
-        </p>
+        </h5>
         <LineChart
           width={700}
           height={400}
@@ -31,22 +31,20 @@ export default function GrafStatictics(
           margin={{
             top: 5,
             right: 30,
-            left: 20,
+            left: 0,
             bottom: 5,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" domain={['-', '-']} />
-          <YAxis
-            domain={['-', '-']}
-          />
+          <YAxis domain={['-', '-']} />
           <Tooltip />
           <Line type="monotone" dataKey={amountY} strokeWidth={strokeWidth} stroke={stroke} />
         </LineChart>
-        <p className="nameGraficX">
+        <h5 className="graphic_x_line">
           {' '}
           {titleX}
-        </p>
+        </h5>
       </div>
     </div>
   );

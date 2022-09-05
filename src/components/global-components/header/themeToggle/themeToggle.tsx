@@ -8,7 +8,8 @@ export default function ThemeToggle() {
   const [, setTheme] = useContext(ThemeCtx);
 
   function themeMode() {
-    setTheme((state) => !state);
+    setTheme((themePower) => !themePower);
+
     document.querySelector('.light')!.classList.toggle('hidden');
     document.querySelector('.dark')!.classList.toggle('hidden');
     document.querySelectorAll('header')!.forEach((item) => {
@@ -34,6 +35,30 @@ export default function ThemeToggle() {
     document.querySelectorAll('.form_btn')!.forEach((item) => {
       item.classList.toggle('dark_form_btn');
     });
+    if (document.querySelector('.card_container')) {
+      document.querySelectorAll('.card_container')!.forEach((item) => {
+        item.classList.toggle('dark_card_container');
+      });
+    }
+    if (document.querySelector('.pagination-btn')) {
+      document.querySelectorAll('.pagination-btn')!.forEach((item) => {
+        item.classList.toggle('dark_pagination-btn');
+      });
+      document.querySelectorAll('.group-btn')!.forEach((item) => {
+        item.classList.toggle('dark_group_btn');
+      });
+    }
+    if (document.querySelector('.selected-btn')) {
+      document.querySelector('.selected-btn')!.classList.toggle('dark_selected_btn');
+    }
+    if (document.querySelector('.game_statistic_content')) {
+      document.querySelectorAll('.game_statistic_content')!.forEach((item) => {
+        item.classList.toggle('dark_game_statistic_content');
+      });
+    }
+    if (document.querySelector('.all_statistics')) {
+      document.querySelector('.all_statistics')!.classList.toggle('dark_all_statistics');
+    }
   }
 
   return (

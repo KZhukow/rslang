@@ -2,7 +2,8 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import './form.css';
-import { useContext } from 'react';
+import { BiHide, BiShow } from 'react-icons/bi';
+import { useContext, useState } from 'react';
 import { closeDivError, popupClose, viewButtonLogin } from '../utils/utils';
 import { AuthorizedCtx } from '../../../app/App';
 import { AuthorizeUser, createNewUser, upsertStatistics } from '../fetch/fetch';
@@ -13,6 +14,7 @@ export default function Registration() {
   const navigate = useNavigate();
 
   const [, setAuthrize] = useContext(AuthorizedCtx);
+  const [showPassword, setShowPassword] = useState(true);
   type FormValues = {
     name: string;
     email: string;
@@ -28,6 +30,11 @@ export default function Registration() {
   } = useForm<FormValues>({
     mode: 'onBlur',
   });
+
+  function togglePasswordVisibility() {
+    return setShowPassword(!showPassword);
+  }
+
   const onSubmit = async (data: FormValues) => {
     const submitButtonReg = document.getElementById('idSubmitRegistration') as HTMLInputElement;
     submitButtonReg.disabled = true;
@@ -53,6 +60,7 @@ export default function Registration() {
     submitButtonReg.disabled = false;
     navigate('../');
   };
+
   return (
     <form
       className="form_body registration hidden"
@@ -60,10 +68,10 @@ export default function Registration() {
     >
       <input
         {...register('name', {
-          required: 'Поле обязательно к заполнению',
+          required: 'The field must be filled in',
           minLength: {
             value: 3,
-            message: 'от 3 символов',
+            message: 'From 3 characters',
           },
         })
         }
@@ -77,10 +85,10 @@ export default function Registration() {
 
       <input
         {...register('email', {
-          required: 'Поле обязательно к заполнению',
+          required: 'The field must be filled in',
           pattern: {
             value: /^\S+@\S+$/,
-            message: "должен быть символ '@' ",
+            message: "There must be a symbol '@' ",
           },
         })
         }
@@ -88,31 +96,36 @@ export default function Registration() {
         className="popup_input registration"
         placeholder="Email Address"
       />
-      <div style={{ height: 25 }}>
+      <div className="error_message">
         {errors?.email && <p className="errorForm">{errors?.email?.message || 'Error!'}</p>}
       </div>
-      <input
-        {...register('password', {
-          required: 'Поле обязательно к заполнению',
-          minLength: {
-            value: 8,
-            message: 'от 8 до 12 символов',
-          },
-          maxLength: {
-            value: 12,
-            message: 'от 8 до 12 символов',
-          },
-        })
-        }
-        type="password"
-        className="password_input registration"
-        autoComplete="on"
-        placeholder="Password"
-      />
-      <div style={{ height: 25 }}>
+      <div className="password_form">
+        <input
+          {...register('password', {
+            required: 'The field must be filled in',
+            minLength: {
+              value: 8,
+              message: 'From 8 to 12 characters',
+            },
+            maxLength: {
+              value: 12,
+              message: 'From 8 to 12 characters',
+            },
+          })
+          }
+          type="password"
+          className="password_input registration"
+          autoComplete="on"
+          placeholder="Password"
+        />
+        <button type="button" className="password_btn" onClick={togglePasswordVisibility}>
+          {showPassword ? <BiHide /> : <BiShow />}
+        </button>
+      </div>
+      <div className="error_message">
         {errors?.password && <p className="errorForm">{errors?.password?.message || 'Error!'}</p>}
       </div>
-      <input type="submit" id="idSubmitRegistration" className="btn popup_btn registration" value="registration<" />
+      <input type="submit" id="idSubmitRegistration" className="btn popup_btn registration" value="registration" />
       <ErrorDiv message={errorLogin} />
       <ErrorDivEmail message={errorEmail} />
     </form>

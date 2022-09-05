@@ -1,7 +1,7 @@
 import { IUserStatisticData } from '../../../pages/statistics/interfaces/interfaces';
 
-export const errorLogin = 'Неправильный логин или пароль';
-export const errorEmail = 'пользователь с таким email уже есть';
+export const errorLogin = 'Incorrect login or password';
+export const errorEmail = 'User with such an email already exists';
 export const oneAuthorizedUser: IUserStatisticData = {
   learnedWords: 0,
   optional: {

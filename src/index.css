@@ -86,8 +86,10 @@ a {
   transform: scaleX(1.1);
 }
 
-.nav-link-active {
-  border: 2px solid black;
+.nav_link_active {
+  border: 1px solid;
+  border-bottom: 4px solid ;
+  border-radius: 1rem;
 }
 
 .header_authorization {
@@ -182,13 +184,8 @@ a {
     position: fixed;
     z-index: 200;
   }
-  .section_start,
-  .about,
-  .error,
-  .games,
-  .tutorialContent,
-  .mainGameWrapper {
-    margin-top: 6rem;
+  .main {
+    padding: 6rem 0 0;
   }
 
 }
@@ -305,6 +302,8 @@ a {
 }
 
 .password_form {
+  display: flex;
+  align-items: center;
   margin: 0 -1%;
 }
 
@@ -367,7 +366,7 @@ a {
   height: 4rem;
   border-radius: 10% 40% / 50% 20%;
 }
-/* должно быть последним !!!!!!! */
+
 .hidden {
   display: none;
 }

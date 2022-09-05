@@ -25,11 +25,11 @@
 
 .dark_header,
 .dark_footer{
-  background: linear-gradient(67deg, rgb(19, 28, 150), rgb(9, 16, 86), rgb(58, 8, 79));
+  background: linear-gradient(67deg, rgb(58, 8, 79), rgb(19, 28, 150));
 }
 
 .dark_gap {
-  background: linear-gradient(67deg, rgb(19, 28, 150), rgb(58, 8, 79));
+  background: linear-gradient(67deg, rgb(58, 8, 79), rgb(19, 28, 150));
   background-size: 400% 400%;
 }
 

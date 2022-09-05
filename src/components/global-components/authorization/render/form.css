@@ -1,4 +1,3 @@
-
 .errorForm {
   color: #bf1650;
 }
@@ -20,4 +19,8 @@
   cursor:auto;
   border-radius: 0.25rem;
   border-color: transparent;
+}
+
+.error_message {
+  height: 25px;
 }

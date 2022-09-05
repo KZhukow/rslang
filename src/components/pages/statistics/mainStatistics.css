@@ -1,142 +1,208 @@
-#root{
+.statistic_page {
+  min-height: 75.2vh;
+  padding: 5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.not_authorized_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 8rem;
+}
+
+.authorized_container {
+  width: 70%;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
-.wrapper {
-  display: grid;
-  height: auto;
-  width: auto;
-}
-.main {
-  background: rgb(205, 245, 255);
-}
-.mainGame {
+
+.games_statistic {
+  width: 80%;
   display: flex;
-  flex-direction: column;
-  justify-items: center;
+  align-items: center;
+  justify-content: space-between;
 }
-.mainGameWrapper {
-  padding-top: 2rem;
-  display: grid;
-  justify-items: center;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
+
+.game_statistic_content {
+  max-width: 35rem;
+  border: 0.2rem solid #320259;
+  border-radius: 1rem;
+  background: rgb(170, 222, 135);
+  padding: 0.7rem;
 }
-.wrapperStatisticsGameTitle {
+
+.dark_game_statistic_content {
+  background-color: #38a169;
+  border-color: #32b6b6;
+}
+
+.game_statistic_title {
   text-align: center;
   padding-bottom: 0.6rem;
   font-size: 1.2rem;
   font-weight: 700;
 }
-.gamesStatistics {
+
+.game_statistic {
+  display: flex;
+  align-items: center;
+  justify-content: left;
   font-size: 1.1rem;
   padding: 0.4rem;
   font-weight: 500;
 }
 
-.wrapperStatisticsGame {
-  max-width: 35rem;
-  border: 0.2rem solid rgb(20, 17, 17);
-  border-radius: 1rem;
-  background: rgb(170, 222, 135);
-  padding: 0.7rem;
-}
 .MuiSvgIconRoot {
   width: 1.4rem;
   height: 1.4rem;
+  margin-right: 0.3rem;
 }
 
-/* сss к блоку с общей статистикой по дню */
-.wrapperAllStatistics {
+.all_statistics {
+  width: 80%;
   display: flex;
-  padding-top: 2rem;
-  justify-content: center;
+  padding: 0.5rem;
+  justify-content: stretch;
   flex-direction: column;
+  margin: 2rem 0 0;
+  border: 4px solid #320259;
+  border-radius: 1rem;
 }
 
-.wrapperStatisticAll {
-display: flex;
-justify-content: center;
+.dark_all_statistics {
+  border-color: #32b6b6;
 }
 
-.statisticAll {
-  text-align: center;
-  padding: 0.7rem;
-  flex-basis: 30%;
-}
-.wrapperStatisticsTitle{
+.all_statistics_title{
   font-size: 1.7rem;
   padding: 1rem;
   font-weight: 700;
   text-align: center;
 }
-.statisticAllAmount {
+
+.all_statistics_content {
+  display: flex;
+  justify-content: center;
+}
+
+.all_statistic {
+  text-align: center;
+  padding: 0.7rem;
+  flex-basis: 30%;
+}
+
+.all_statistic_amount {
   font-size: 3rem;
   padding: 0.7rem;
   font-weight: 500;
 }
-.statisticAllDiscription{
+
+.all_statistic_description {
   font-size: 1.3rem;
   font-weight: 700;
   padding: 0.7rem;
 }
-.wrapperGraf{
+
+.game_statistic_graphics {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.graph_content {
   padding-top: 4rem;
 }
-.graficStatistics{
+
+.statistics_graph {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.nameGrafic {
+
+.graphic_title {
   font-size: 1.3rem;
   font-weight: 700;
   text-align: center;
   padding-bottom: 1rem;
 }
-.nameGraficY {
+
+.graphic_content{
+  width: 90%;
+  margin: 0 auto;
+}
+
+.graphic_y_line {
   font-size: 1rem;
   font-weight: 400;
   text-align:left;
   padding-bottom: 0.6rem;
 }
-.nameGraficX {
+
+.graphic_x_line {
   font-size: 1rem;
   font-weight: 400;
   text-align:right;
 }
-.graficStatisticsView{
-  margin: 0 auto;
-}
-.recharts-wrapper {
-  width: 1000px;
-  height: 100px;
-}
 
-.mainGameWrapper {
-  padding-top: 2rem;
-  display: grid;
-  justify-items: center;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
-}
-.mainGameWrapperGrafic {
-  padding-top: 2rem;
-  display: grid;
-  justify-items: center;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
-}
+@media screen and (max-width: 1500px) {
 
-@media screen and (max-width: 700px) {
-  .mainGameWrapper {
+  .authorized_container {
+    width: 90%;
+  }
+  .game_statistic_graphics {
     grid-template-columns: 1fr;
-    grid-gap: 1rem;
   }
 }
 
-@media screen and (max-width: 1500px) {
-.mainGameWrapperGrafic {
-  grid-template-columns: 1fr;
+@media screen and (max-width: 1200px) {
+
+  .authorized_container {
+    width: 80%;
+  }
+  .games_statistic {
+    flex-direction: column;
+    justify-content: center;
+    margin: -2% 0;
+  }
+  .game_statistic_content {
+    margin: 2% 0;
+  }
+  .game_statistic {
+    margin: 0 3rem;
+  }
+
 }
+
+@media screen and (max-width: 1080px) {
+
+  .statistic_page {
+    padding: 11rem 0 5rem;
+  }
+
+}
+
+@media screen and (max-width: 780px) {
+
+  .game_statistic {
+    margin: 0;
+  }
+  .recharts-surface {
+    width: 600px;
+    height: 400px;
+  }
+  .graphic_y_line {
+    padding-left: 4rem;
+  }
+  .graphic_x_line {
+    padding-right: 4rem;
+  }
+
 }

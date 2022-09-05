@@ -1,5 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useContext } from 'react';
+import './form.css';
+import { BiHide, BiShow } from 'react-icons/bi';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { AuthorizedCtx } from '../../../app/App';
@@ -7,12 +9,12 @@ import { errorLogin } from '../const/const';
 import { AuthorizeUser } from '../fetch/fetch';
 import { closeDivError, popupClose, viewButtonLogin } from '../utils/utils';
 import { ErrorDiv } from './errorMessage';
-import './form.css';
 
 export default function LoginIn() {
   const navigate = useNavigate();
 
   const [, setAuthrize] = useContext(AuthorizedCtx);
+  const [showPassword, setShowPassword] = useState(true);
   type FormValues = {
     email: string;
     password: string;
@@ -27,6 +29,10 @@ export default function LoginIn() {
   } = useForm<FormValues>({
     mode: 'onBlur',
   });
+
+  function togglePasswordVisibility() {
+    return setShowPassword(!showPassword);
+  }
 
   const onSubmit = async (data: FormValues) => {
     const submitButtonLogin = document.getElementById('idSubmitLogin') as HTMLInputElement;
@@ -54,10 +60,10 @@ export default function LoginIn() {
     >
       <input
         {...register('email', {
-          required: 'Поле обязательно к заполнению',
+          required: 'The field must be filled in',
           pattern: {
             value: /^\S+@\S+$/,
-            message: "должен быть символ '@' ",
+            message: "There must be a symbol '@' ",
           },
         })
         }
@@ -65,28 +71,33 @@ export default function LoginIn() {
         className="popup_input login"
         placeholder="Email Address"
       />
-      <div style={{ height: 25 }}>
+      <div className="error_message">
         {errors?.email && <p className="errorForm">{errors?.email?.message || 'Error!'}</p>}
       </div>
-      <input
-        {...register('password', {
-          required: 'Поле обязательно к заполнению',
-          minLength: {
-            value: 8,
-            message: 'от 8 до 12 символов',
-          },
-          maxLength: {
-            value: 12,
-            message: 'от 8 до 12 символов',
-          },
-        })
-        }
-        type="password"
-        className="popup_input login"
-        autoComplete="on"
-        placeholder="Password"
-      />
-      <div style={{ height: 25 }}>
+      <div className="password_form">
+        <input
+          {...register('password', {
+            required: 'The field must be filled in',
+            minLength: {
+              value: 8,
+              message: 'From 8 to 12 characters',
+            },
+            maxLength: {
+              value: 12,
+              message: 'From 8 to 12 characters',
+            },
+          })
+          }
+          type={showPassword ? 'password' : 'text'}
+          className="popup_input password_input login"
+          autoComplete="on"
+          placeholder="Password"
+        />
+        <button type="button" className="password_btn" onClick={togglePasswordVisibility}>
+          {showPassword ? <BiHide /> : <BiShow />}
+        </button>
+      </div>
+      <div className="error_message">
         {errors?.password && <p className="errorForm">{errors?.password?.message || 'Error!'}</p>}
       </div>
       <input type="submit" id="idSubmitLogin" className="btn popup_btn login" value="sign in" />
