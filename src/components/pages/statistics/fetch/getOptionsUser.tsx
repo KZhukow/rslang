@@ -5,13 +5,17 @@ import { IUserStatisticData, dataUser, IdayStatistic, IGamesStatistic } from '..
 
 export async function getOptionsUser() {
   const userData: dataUser = JSON.parse(localStorage.getItem('userData') as string);
-  const response = await fetch(`${USERS}/${userData.userId}/statistics`, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${userData.token}`,
-    },
-  }).catch();
-  return response.status !== 200 ? { success: false } : { ...(await response.json()) };
+  try {
+    const response = await fetch(`${USERS}/${userData.userId}/statistics`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${userData.token}`,
+      },
+    });
+    return response.status !== 200 ? { success: false } : { ...(await response.json()) };
+  } catch (error) {
+    throw new Error('не авторизован');
+  }
 }
 
 export async function upsertOptionsUser(authorizedUser: IUserStatisticData) {
