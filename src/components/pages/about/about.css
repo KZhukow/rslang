@@ -6,7 +6,7 @@
 }
 
 .about_list {
-  width: 70vw;
+  width: 75vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,8 +84,25 @@
   padding: 0 7rem;
 }
 
+.about_item_name {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 1rem;
+}
+
 .about_description_title {
   padding: 1rem 0;
+}
+
+.work_list {
+  list-style: none;
+  padding: 0.8rem 0 0 ;
+}
+
+.work_list_item {
+  padding: 0 0 0 1rem;
 }
 
 @media (max-width: 1080px) {

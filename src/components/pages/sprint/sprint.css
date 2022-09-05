@@ -3,10 +3,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background:
+          linear-gradient(#78cfed 75%, rgba(255, 255, 255, 0)),
+          linear-gradient(90deg, rgba(10, 255, 235), rgb(149, 2, 190));
 }
+
 .game-sprint:focus {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
 .game-sprint:focus-visible {
   outline: none;
 }
@@ -25,6 +30,7 @@
   align-items: center;
   padding: 5px;
 }
+
 .score-and-mute {
   display: flex;
   flex-direction: row;
@@ -40,9 +46,15 @@
   align-items: center;
   padding: 15px 50px;
 }
+
 .game-sprint-main-content * {
   width: 100%;
 }
+
+.timer {
+
+}
+
 .lamps,
 .birds {
   position: relative;
@@ -68,6 +80,7 @@
   width: 40px;
   fill: white;
 }
+
 .lamp-active {
   fill: yellow;
   animation: lamp-animation;
@@ -76,7 +89,9 @@
   transform-origin: top;
   animation-timing-function: cubic-bezier(0.55, 0.06, 0.85, 0.33);
 }
+
 @keyframes lamp-animation {
+
   10% {
     transform: rotate(25deg);
   }
@@ -110,6 +125,7 @@
   100% {
     transform: rotate(0deg);
   }
+
 }
 
 .stick {
@@ -124,13 +140,16 @@
   z-index: 99;
   transform: scale(0);
 }
+
 .bird-active {
   animation-name: bird-animation;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 @keyframes bird-animation {
+
   0% {
     transform: scale(0);
   }
@@ -146,6 +165,7 @@
   100% {
       transform: scale(1);
   }
+
 }
 
 .btn-to-select-group {
@@ -170,7 +190,7 @@
   text-align: center;
   background-color: rgb(25 226 253);
   padding: 15px 10px;
-  box-shadow: 0 5px 10px 0px black;
+  box-shadow: 0 5px 10px 0 black;
   border-radius: 25px;
 }
 
@@ -189,13 +209,16 @@
   border-radius: 5px;
   padding: 5px 3px;
 }
+
 .choice-btn span {
   width: auto;
 }
+
 .choice-btn-wrong {
   background-color: red;
   border-color: brown;
 }
+
 .choice-btn-right {
   background-color: lime;
   border-color: rgb(1, 204, 68);
@@ -207,6 +230,7 @@
   width: 30px;
   fill: gray;
 }
+
 .mute-btn svg:hover {
   cursor: pointer;
   fill: darkgray;

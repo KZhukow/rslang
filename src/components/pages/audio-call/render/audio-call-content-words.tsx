@@ -42,6 +42,7 @@ export default function WordsContentCall(
       nextContentNext?.classList.add('call-hidden');
     }
   }
+
   function ChangeViewAnswerSong(change: boolean) {
     const soundButton = document.getElementById('song-wrapper-call');
     const answerContent = document.getElementById('answer-word-call');
@@ -85,7 +86,6 @@ export default function WordsContentCall(
       id: word.id,
       result: resultAnswerCall,
     });
-    // console.log(gameResult);
     setbestSeria(bestSeriaArray);
   }
 
@@ -172,8 +172,10 @@ export default function WordsContentCall(
           type="button"
           className="next-words-wrapper"
         >
-          <div className="dont-button-call-word" role="presentation" id="dont-know-call-button" onClick={() => choiseDontKnowButtonCall()}> Не знаю </div>
-          <svg className="next-button-call-word call-hidden" onClick={() => SelectWordsInExercise()} id="next-button-call-word" focusable="false" viewBox="0 0 24 24"><path d="M22 12l-4-4v3H3v2h15v3z" /></svg>
+          <div className="dont-button-call-word" role="presentation" id="dont-know-call-button" onClick={() => choiseDontKnowButtonCall()}>I don`t know</div>
+          <svg className="next-button-call-word call-hidden" onClick={() => SelectWordsInExercise()} id="next-button-call-word" focusable="false" viewBox="0 0 24 24">
+            <path d="M22 12l-4-4v3H3v2h15v3z" />
+          </svg>
         </button>
       </div>
     </>

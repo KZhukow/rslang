@@ -1,7 +1,7 @@
 import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Line } from 'recharts';
 import { amountDateLength, axisX, axisY } from '../const/const';
 import { IDataGrafStatistis } from '../interfaces/interfaces';
-// Толщина  рисуемой линии графика и ее цвет
+
 const strokeWidth = 3;
 const stroke = 'black';
 

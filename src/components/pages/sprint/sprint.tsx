@@ -149,18 +149,18 @@ export default function Sprint() {
       {
         curGroup === -1 && (
           <div className="view-to-select-group">
-            <div>Sprint</div>
-            <div>
+            <h3 className="select_group_title">Sprint</h3>
+            <p>
               Check how much points you can get in one minute,
               making educated guesses about what is right and what is wrong.
-            </div>
+            </p>
             <div className="btns-to-select-group">
-              <button type="button" className="btn-to-select-group group-btn-green" onClick={selectGroup}>1</button>
-              <button type="button" className="btn-to-select-group group-btn-yellow" onClick={selectGroup}>2</button>
-              <button type="button" className="btn-to-select-group group-btn-orange" onClick={selectGroup}>3</button>
-              <button type="button" className="btn-to-select-group group-btn-pink" onClick={selectGroup}>4</button>
-              <button type="button" className="btn-to-select-group group-btn-purpure" onClick={selectGroup}>5</button>
-              <button type="button" className="btn-to-select-group group-btn-violet" onClick={selectGroup}>6</button>
+              <button type="button" className="btn-to-select-group group_btn_first" onClick={selectGroup}>1</button>
+              <button type="button" className="btn-to-select-group group_btn_second" onClick={selectGroup}>2</button>
+              <button type="button" className="btn-to-select-group group_btn_third" onClick={selectGroup}>3</button>
+              <button type="button" className="btn-to-select-group group_btn_fourth" onClick={selectGroup}>4</button>
+              <button type="button" className="btn-to-select-group group_btn_fifth" onClick={selectGroup}>5</button>
+              <button type="button" className="btn-to-select-group group_btn_sixth" onClick={selectGroup}>6</button>
             </div>
           </div>
         )
@@ -169,7 +169,10 @@ export default function Sprint() {
         (curGroup !== -1 && !loading && counter > 0 && wordNum < 60) && (
           <div className="game-sprint-container">
             <div className="tools">
-              <div className="timer">{counter}</div>
+              <div className="timer">
+                Timer:
+                {counter}
+              </div>
               <div className="score-and-mute">
                 <div className="mute-btn" onClick={() => switchVolumeAudioSignal(setVolumeAudioSignal)} role="presentation">
                   {!volumeAudioSignal && <FaVolumeMute color="gray" size="100%" />}
