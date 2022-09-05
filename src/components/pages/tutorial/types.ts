@@ -122,6 +122,7 @@ export interface CustomLinkProp {
 export interface ModifierBtnsProp {
   userWord: IUserWordInfo | undefined,
   id: string,
+  setUserWordState: React.Dispatch<React.SetStateAction<IUserWordInfo | undefined>>,
 }
 export interface ITutorialParams {
   group: string,

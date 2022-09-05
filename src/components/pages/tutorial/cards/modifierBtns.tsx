@@ -7,7 +7,7 @@ import { IUserWordInfo, ModifierBtnsProp } from '../types';
 import { createUserWord, updateUserWord } from '../../sprint/fetch';
 import { updateUserStatistic } from '../../statistics/fetch/getOptionsUser';
 
-export default function ModifierBtns({ userWord, id }: ModifierBtnsProp) {
+export default function ModifierBtns({ userWord, id, setUserWordState }: ModifierBtnsProp) {
   const [star, setStar] = useState(userWord?.difficulty === 'study');
   const starModifier = star ? 'star-active' : 'star-not-active';
   const [devil, setDevil] = useState(userWord?.difficulty === 'hard');
@@ -26,6 +26,7 @@ export default function ModifierBtns({ userWord, id }: ModifierBtnsProp) {
       const userWordOption = await createUserWord(id, true);
       await updateUserStatistic(true, 1);
       setUserWordSt(userWordOption);
+      setUserWordState(userWordOption);
     }
     setLoading(false);
   }
@@ -41,12 +42,14 @@ export default function ModifierBtns({ userWord, id }: ModifierBtnsProp) {
       const userWordOption = await createUserWord(id, false);
       await updateUserStatistic(true, 0);
       setUserWordSt(userWordOption);
+      setUserWordState(userWordOption);
     }
     setLoading(false);
   }
 
   return (
     <div className="modifier">
+      <div className="blur-block" />
       {loading && (<div className="modify-btn-loader" />)}
       <button type="button" onClick={clickStartBtn} className={starModifier}>
         <Star />
