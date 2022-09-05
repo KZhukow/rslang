@@ -5,6 +5,7 @@ import { ReactComponent as Star } from '../image/star.svg';
 
 import { IUserWordInfo, ModifierBtnsProp } from '../types';
 import { createUserWord, updateUserWord } from '../../sprint/fetch';
+import { updateUserStatistic } from '../../statistics/fetch/getOptionsUser';
 
 export default function ModifierBtns({ userWord, id }: ModifierBtnsProp) {
   const [star, setStar] = useState(userWord?.difficulty === 'study');
@@ -20,9 +21,10 @@ export default function ModifierBtns({ userWord, id }: ModifierBtnsProp) {
     if (devil) setDevil((state) => !state);
     if (userWordSt) {
       await updateUserWord(userWordSt as IUserWordInfo, true, !star);
-      // await updateUserStatistic(true, true); первое true - новые слова, второе - изучено или нет
+      await updateUserStatistic(false, !star ? 1 : -1);
     } else {
       const userWordOption = await createUserWord(id, true);
+      await updateUserStatistic(true, 1);
       setUserWordSt(userWordOption);
     }
     setLoading(false);
@@ -34,8 +36,10 @@ export default function ModifierBtns({ userWord, id }: ModifierBtnsProp) {
     if (star) setStar((state) => !state);
     if (userWordSt) {
       await updateUserWord(userWordSt as IUserWordInfo, false, !devil);
+      await updateUserStatistic(false, star ? -1 : 0);
     } else {
       const userWordOption = await createUserWord(id, false);
+      await updateUserStatistic(true, 0);
       setUserWordSt(userWordOption);
     }
     setLoading(false);

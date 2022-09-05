@@ -152,18 +152,16 @@ export async function upsertStatiscticGame() {
   }
 }
 
-export async function updateUserStatistic(newWord: boolean, learnedWord: boolean) {
+export async function updateUserStatistic(newWord: boolean, learnedWord: -1 | 0 | 1) {
   const getDataUser: IUserStatisticData = await getOptionsUser();
   const { dayStatistic, allTimeStatistic } = getDataUser.optional;
 
   if (addNextDay(getDataUser)) {
     if (newWord) {
       dayStatistic.newWordsOfDay += 1;
-      dayStatistic.learnedWords += 1;
-    } else if (learnedWord) {
-      dayStatistic.learnedWords += 1;
+      dayStatistic.learnedWords += learnedWord;
     } else {
-      dayStatistic.learnedWords -= 1;
+      dayStatistic.learnedWords += learnedWord;
       if (dayStatistic.learnedWords < 0) {
         dayStatistic.learnedWords = 0;
       }
@@ -173,11 +171,9 @@ export async function updateUserStatistic(newWord: boolean, learnedWord: boolean
   } else {
     if (newWord) {
       dayStatistic.newWordsOfDay += 1;
-      dayStatistic.learnedWords += 1;
-    } else if (learnedWord) {
-      dayStatistic.learnedWords += 1;
+      dayStatistic.learnedWords += learnedWord;
     } else {
-      dayStatistic.learnedWords -= 1;
+      dayStatistic.learnedWords += learnedWord;
       if (dayStatistic.learnedWords < 0) {
         dayStatistic.learnedWords = 0;
       }
