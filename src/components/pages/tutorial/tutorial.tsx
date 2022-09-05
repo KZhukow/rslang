@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import './tutorial.css';
 
 import { ReactComponent as OnePageArrow } from './image/one-page-arrow.svg';
 import { ReactComponent as AllPageArrow } from './image/all-page-arrow.svg';
 import CustomBtnLink from './custom-btn-link';
+import { ThemeCtx } from '../../app/App';
 
 interface ITutorialParams {
   group: string,
   page: string,
 }
 export default function TutorialContent() {
-  const backGround = ['group-green', 'group-yellow', 'group-orange', 'group-pink', 'group-purpure', 'group-violet'];
+  const [themeType] = useContext(ThemeCtx);
+  const backGround = themeType
+    ? ['group-green', 'group-yellow', 'group-orange', 'group-pink', 'group-purpure', 'group-violet']
+    : ['dGroup-green', 'dGroup-yellow', 'dGroup-orange', 'dGroup-pink', 'dGroup-purpure', 'dGroup-violet'];
 
   const { group, page } = useParams() as unknown as ITutorialParams;
   const curGroup = +group - 1;
@@ -34,9 +38,9 @@ export default function TutorialContent() {
     e.target.value = '';
     navigate(`../glossary/${group}/${value}`);
   }
+
   return (
     <div className={`tutorialContent ${backGround[curGroup]}`}>
-      {/* <div className="spinner"><Spinner /></div> */}
       <Outlet />
       <div className="controllers">
         <div className="pagination">

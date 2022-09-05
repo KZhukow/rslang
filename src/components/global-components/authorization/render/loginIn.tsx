@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { AuthorizedCtx } from '../../../app/App';
 import { errorLogin } from '../const/const';
 import { AuthorizeUser } from '../fetch/fetch';
@@ -9,6 +10,8 @@ import { ErrorDiv } from './errorMessage';
 import './form.css';
 
 export default function LoginIn() {
+  const navigate = useNavigate();
+
   const [, setAuthrize] = useContext(AuthorizedCtx);
   type FormValues = {
     email: string;
@@ -41,6 +44,7 @@ export default function LoginIn() {
       closeDivError(divError);
     }
     submitButtonLogin.disabled = false;
+    navigate('../');
   };
 
   return (

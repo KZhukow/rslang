@@ -1,4 +1,6 @@
-import { CardProp, IAudioSrc } from '../types';
+import { useContext } from 'react';
+import { AuthorizedCtx } from '../../../app/App';
+import { CardProp, IAudioSrc, IPaginatedResults, IWord } from '../types';
 
 import AudioBtns from './audio-btns';
 import ModifierBtns from './modifierBtns';
@@ -10,17 +12,26 @@ export default function Card({ word }: CardProp) {
     audio1: `https://react-rslang-back-app.herokuapp.com/${word.audioMeaning}`,
     audio2: `https://react-rslang-back-app.herokuapp.com/${word.audioExample}`,
   };
+  const [authorized] = useContext(AuthorizedCtx);
 
   return (
     <div className="card-container">
-      <ModifierBtns />
+      {authorized && (
+        <ModifierBtns
+          userWord={(word as IPaginatedResults).userWord}
+          id={(word as IPaginatedResults)._id || (word as IWord).id}
+        />
+      )}
       <div className="card-img" style={{ backgroundImage: bgCard }}>
         <div className="card-gradient">
           <p className="card-title">{ word.word }</p>
           <div className="card-subtitle">
             <span>{ word.transcription }</span>
             <span>{ word.wordTranslate }</span>
-            <AudioBtns id={word.id} audioSrc={audioSrc} />
+            <AudioBtns
+              id={(word as IPaginatedResults)._id || (word as IWord).id}
+              audioSrc={audioSrc}
+            />
           </div>
         </div>
       </div>

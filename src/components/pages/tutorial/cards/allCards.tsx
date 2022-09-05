@@ -1,16 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { wordsPage } from '../const';
-import { IWord } from '../types';
+import { IPaginatedResults, ITutorialParams, IWord } from '../types';
 import Card from './card';
 import { ReactComponent as Spinner } from '../image/spinner.svg';
+import { getAggregatedWords, getPageWords } from '../../sprint/fetch';
+import { AuthorizedCtx } from '../../../app/App';
 
-interface ITutorialParams {
-  group: string,
-  page: string,
-}
 export default function AllCards() {
-  const [wordsInfo, setWordsInfo] = useState<IWord[]>([]);
+  const [authorized] = useContext(AuthorizedCtx);
+  const [wordsInfo, setWordsInfo] = useState<IPaginatedResults[] | IWord[]>([]);
   const [loading, setLoading] = useState(false);
   const { group, page } = useParams() as unknown as ITutorialParams;
   const curGroup = +group - 1;
@@ -22,8 +20,13 @@ export default function AllCards() {
     if (curGroup >= 0 && curGroup < 6 && curPage >= 0 && curPage < 30) {
       if (Number.isInteger(curGroup) && Number.isInteger(curPage)) {
         setLoading(true);
-        const response = await fetch(wordsPage(curGroup, curPage));
-        setWordsInfo(await response.json());
+        if (authorized) {
+          const aggregatedWords = await getAggregatedWords(curGroup, curPage);
+          setWordsInfo(aggregatedWords);
+        } else {
+          const words = await getPageWords(curGroup, curPage);
+          setWordsInfo(words);
+        }
         setLoading(false);
       } else {
         navigate(`../../glossary/${Math.floor(curGroup) + 1}/${Math.floor(curPage) + 1}`);
@@ -39,7 +42,7 @@ export default function AllCards() {
 
   useEffect(() => {
     fetchWords();
-  }, [group, page]);
+  }, [group, page, authorized]);
 
   return (
     <>
@@ -48,7 +51,7 @@ export default function AllCards() {
         { wordsInfo.map((word) => (
           <Card
             word={word}
-            key={word.id}
+            key={(word as IPaginatedResults)._id || (word as IWord).id}
           />
         )) }
       </div>
