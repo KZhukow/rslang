@@ -5,6 +5,7 @@ import Card from './card';
 import { ReactComponent as Spinner } from '../image/spinner.svg';
 import { getAggregatedWords, getPageWords } from '../../sprint/fetch';
 import { AuthorizedCtx } from '../../../app/App';
+import { viewButtonLogin } from '../../../global-components/authorization/utils/utils';
 
 export default function AllCards() {
   const [authorized] = useContext(AuthorizedCtx);
@@ -43,6 +44,10 @@ export default function AllCards() {
   useEffect(() => {
     fetchWords();
   }, [group, page, authorized]);
+
+  useEffect(() => {
+    viewButtonLogin(authorized);
+  }, []);
 
   return (
     <>

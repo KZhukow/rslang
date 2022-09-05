@@ -8,7 +8,7 @@ import { upsertStatiscticGame } from './fetch/getOptionsUser';
 
 export default function Statistics() {
   const { loading, statisticsOfUser, authrize } = getStatistics();
-  upsertStatiscticGame();
+  if (authrize) upsertStatiscticGame();
   return authrize ? (
     <>
       {loading && <div className="spinner"><Spinner /></div>}
