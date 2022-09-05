@@ -92,3 +92,16 @@ export async function getPageWords(group: number, page: number): Promise<IWord[]
   const words: IWord[] = await request.json();
   return words;
 }
+
+export async function getDifficultWords() {
+  const userData: dataUser = JSON.parse(localStorage.getItem('userData') as string);
+  const request = await fetch(`${adress}users/${userData.userId}/aggregatedWords?filter={"userWord.difficulty":"hard"}`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${userData.token}`,
+      accept: 'application/json',
+    },
+  });
+  const studyWords: IAggregatedWords[] = await request.json();
+  return studyWords[0].paginatedResults;
+}

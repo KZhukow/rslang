@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { IPaginatedResults, ITutorialParams, IWord } from '../types';
 import Card from './card';
 import { ReactComponent as Spinner } from '../image/spinner.svg';
-import { getAggregatedWords, getPageWords } from '../../sprint/fetch';
+import { getAggregatedWords, getDifficultWords, getPageWords } from '../../sprint/fetch';
 import { AuthorizedCtx } from '../../../app/App';
 import { viewButtonLogin } from '../../../global-components/authorization/utils/utils';
 
@@ -17,8 +17,20 @@ export default function AllCards() {
 
   const navigate = useNavigate();
 
+  const [counter, setCounter] = useState(1);
+
   async function fetchWords(): Promise<void> {
-    if (curGroup >= 0 && curGroup < 6 && curPage >= 0 && curPage < 30) {
+    if (curGroup === 6 && curPage === 0 && authorized) {
+      setLoading(true);
+      const difficultWords = await getDifficultWords();
+      if (difficultWords.length) {
+        setWordsInfo(difficultWords);
+        setCounter(difficultWords.length);
+      } else {
+        navigate('../../glossary/1/1');
+      }
+      setLoading(false);
+    } else if (curGroup >= 0 && curGroup < 6 && curPage >= 0 && curPage < 30) {
       if (Number.isInteger(curGroup) && Number.isInteger(curPage)) {
         setLoading(true);
         if (authorized) {
@@ -46,6 +58,12 @@ export default function AllCards() {
   }, [group, page, authorized]);
 
   useEffect(() => {
+    if (!counter) {
+      navigate('../../glossary/1/1');
+    }
+  }, [counter]);
+
+  useEffect(() => {
     viewButtonLogin(authorized);
   }, []);
 
@@ -57,6 +75,7 @@ export default function AllCards() {
           <Card
             word={word}
             key={(word as IPaginatedResults)._id || (word as IWord).id}
+            setCounter={setCounter}
           />
         )) }
       </div>

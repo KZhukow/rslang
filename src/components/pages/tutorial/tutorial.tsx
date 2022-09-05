@@ -5,7 +5,7 @@ import './tutorial.css';
 import { ReactComponent as OnePageArrow } from './image/one-page-arrow.svg';
 import { ReactComponent as AllPageArrow } from './image/all-page-arrow.svg';
 import CustomBtnLink from './custom-btn-link';
-import { ThemeCtx } from '../../app/App';
+import { AuthorizedCtx, ThemeCtx } from '../../app/App';
 
 interface ITutorialParams {
   group: string,
@@ -14,8 +14,8 @@ interface ITutorialParams {
 export default function TutorialContent() {
   const [themeType] = useContext(ThemeCtx);
   const backGround = themeType
-    ? ['group-green', 'group-yellow', 'group-orange', 'group-pink', 'group-purpure', 'group-violet']
-    : ['dGroup-green', 'dGroup-yellow', 'dGroup-orange', 'dGroup-pink', 'dGroup-purpure', 'dGroup-violet'];
+    ? ['group-green', 'group-yellow', 'group-orange', 'group-pink', 'group-purpure', 'group-violet', 'group-black']
+    : ['dGroup-green', 'dGroup-yellow', 'dGroup-orange', 'dGroup-pink', 'dGroup-purpure', 'dGroup-violet', 'dGroup-black'];
 
   const { group, page } = useParams() as unknown as ITutorialParams;
   const curGroup = +group - 1;
@@ -24,6 +24,8 @@ export default function TutorialContent() {
   const prevPage = curPage <= 1 ? 1 : curPage - 1;
 
   const navigate = useNavigate();
+
+  const [authorized] = useContext(AuthorizedCtx);
 
   function switchPageInput(e: React.FocusEvent<HTMLInputElement, Element>) {
     e.preventDefault();
@@ -43,21 +45,23 @@ export default function TutorialContent() {
     <div className={`tutorialContent ${backGround[curGroup]}`}>
       <Outlet />
       <div className="controllers">
-        <div className="pagination">
-          <Link to={`../glossary/${group}/1`} className="pagination-btn first-page-arr">
-            <AllPageArrow />
-          </Link>
-          <Link to={`../glossary/${group}/${prevPage}`} className="pagination-btn">
-            <OnePageArrow />
-          </Link>
-          <input type="number" placeholder={`${page}/30`} className="num-page" onBlur={switchPageInput} />
-          <Link to={`../glossary/${group}/${nextPage}`} className="pagination-btn next-page-arr">
-            <OnePageArrow />
-          </Link>
-          <Link to={`../glossary/${group}/30`} className="pagination-btn last-page-arr">
-            <AllPageArrow />
-          </Link>
-        </div>
+        {+group !== 7 && (
+          <div className="pagination">
+            <Link to={`../glossary/${group}/1`} className="pagination-btn first-page-arr">
+              <AllPageArrow />
+            </Link>
+            <Link to={`../glossary/${group}/${prevPage}`} className="pagination-btn">
+              <OnePageArrow />
+            </Link>
+            <input type="number" placeholder={`${page}/30`} className="num-page" onBlur={switchPageInput} />
+            <Link to={`../glossary/${group}/${nextPage}`} className="pagination-btn next-page-arr">
+              <OnePageArrow />
+            </Link>
+            <Link to={`../glossary/${group}/30`} className="pagination-btn last-page-arr">
+              <AllPageArrow />
+            </Link>
+          </div>
+        )}
         <div className="group-btns">
           <CustomBtnLink to={`../glossary/1/${+group === 1 ? curPage : 1}`} className="group-btn group-btn-green">1</CustomBtnLink>
           <CustomBtnLink to={`../glossary/2/${+group === 2 ? curPage : 1}`} className="group-btn group-btn-yellow">2</CustomBtnLink>
@@ -65,7 +69,7 @@ export default function TutorialContent() {
           <CustomBtnLink to={`../glossary/4/${+group === 4 ? curPage : 1}`} className="group-btn group-btn-pink">4</CustomBtnLink>
           <CustomBtnLink to={`../glossary/5/${+group === 5 ? curPage : 1}`} className="group-btn group-btn-purpure">5</CustomBtnLink>
           <CustomBtnLink to={`../glossary/6/${+group === 6 ? curPage : 1}`} className="group-btn group-btn-violet">6</CustomBtnLink>
-          <button type="button" className="group-btn group-btn-black">D</button>
+          {authorized && <CustomBtnLink to="../glossary/7/1" className="group-btn group-btn-black">D</CustomBtnLink>}
         </div>
       </div>
     </div>

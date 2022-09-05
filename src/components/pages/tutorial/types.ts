@@ -106,6 +106,7 @@ export interface IAggregatedWords{
 
 export interface CardProp {
   word: IPaginatedResults | IWord;
+  setCounter: React.Dispatch<React.SetStateAction<number>>,
 }
 export interface CardsProp {
   wordsInfo: IWord[];
@@ -123,6 +124,8 @@ export interface ModifierBtnsProp {
   userWord: IUserWordInfo | undefined,
   id: string,
   setUserWordState: React.Dispatch<React.SetStateAction<IUserWordInfo | undefined>>,
+  setVisibility: React.Dispatch<React.SetStateAction<boolean>>,
+  setCounter: React.Dispatch<React.SetStateAction<number>>,
 }
 export interface ITutorialParams {
   group: string,
