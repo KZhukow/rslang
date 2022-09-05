@@ -1,19 +1,27 @@
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import { ReactComponent as Devil } from '../image/devil.svg';
 import { ReactComponent as Star } from '../image/star.svg';
 
-import { IUserWordInfo, ModifierBtnsProp } from '../types';
+import { ITutorialParams, IUserWordInfo, ModifierBtnsProp } from '../types';
 import { createUserWord, updateUserWord } from '../../sprint/fetch';
 import { updateUserStatistic } from '../../statistics/fetch/getOptionsUser';
 
-export default function ModifierBtns({ userWord, id, setUserWordState }: ModifierBtnsProp) {
+export default function ModifierBtns({
+  userWord,
+  id,
+  setUserWordState,
+  setVisibility,
+  setCounter,
+}: ModifierBtnsProp) {
   const [star, setStar] = useState(userWord?.difficulty === 'study');
   const starModifier = star ? 'star-active' : 'star-not-active';
   const [devil, setDevil] = useState(userWord?.difficulty === 'hard');
   const devilModifier = devil ? 'devil-active' : 'devil-not-active';
   const [loading, setLoading] = useState(false);
   const [userWordSt, setUserWordSt] = useState(userWord);
+  const { group } = useParams() as unknown as ITutorialParams;
 
   async function clickStartBtn() {
     setLoading(true);
@@ -29,6 +37,10 @@ export default function ModifierBtns({ userWord, id, setUserWordState }: Modifie
       setUserWordState(userWordOption);
     }
     setLoading(false);
+    if (+group === 7) {
+      setVisibility(false);
+      setCounter((count) => count - 1);
+    }
   }
 
   async function clickDevilBtn() {
@@ -45,6 +57,10 @@ export default function ModifierBtns({ userWord, id, setUserWordState }: Modifie
       setUserWordState(userWordOption);
     }
     setLoading(false);
+    if (+group === 7) {
+      setVisibility(false);
+      setCounter((count) => count - 1);
+    }
   }
 
   return (

@@ -17,6 +17,9 @@
   width: 390px;
   position: relative;
 }
+.card-container-hidden {
+  display: none;
+}
 .card-img {
   width: 100%;
   height: 260px;
@@ -256,6 +259,9 @@
 }
 .dGroup-violet {
   background-color: green;
+}
+.dGroup-black {
+  background-color: rgb(121, 134, 0);
 }
 
 .word-statistics-view {
