@@ -13,10 +13,6 @@ export default function GrafStatictics(
     if ((a.date as string).length > amountDateLength) {
       a.date = `${`${a.date}`.slice(8, 10)}.${`${a.date}`.slice(5, 7)}.${`${a.date}`.slice(0, 4)}`;
     }
-
-    if ((a.newWordsOfDay as Array<string>).length) {
-      a.newWordsOfDay = (a.newWordsOfDay as Array<string>).length;
-    }
   });
   // в lineChart  - размеры самого графика 700/400;
   return (

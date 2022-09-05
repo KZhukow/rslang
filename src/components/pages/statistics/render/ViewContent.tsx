@@ -1,6 +1,6 @@
 import { axisYOne, axisYTwo, grafTitleOne, grafTitleTwo, nameGameAudioCall, nameGameSprint } from '../const/const';
 import { PropsAuthorize } from '../interfaces/interfaces';
-import { GamesStatistics, AllStatisticsOfDay } from './gamesStatistics';
+import { AllStatisticsOfDay, GamesStatisticsAudiocall, GamesStatisticsSprint } from './gamesStatistics';
 import GrafStatictics from './grafStatistics';
 
 export default function ViewAuthorize({ statisticsOfUser }: PropsAuthorize) {
@@ -10,13 +10,13 @@ export default function ViewAuthorize({ statisticsOfUser }: PropsAuthorize) {
       <div className="mainGame">
         <div className="mainGameWrapper">
           {statisticsOfUser && (
-            <GamesStatistics
+            <GamesStatisticsSprint
               title={nameGameSprint}
               statisticsGame={optional.sprint}
             />
           )}
           {statisticsOfUser && (
-          <GamesStatistics
+          <GamesStatisticsAudiocall
             title={nameGameAudioCall}
             statisticsGame={optional.audioCall}
           />

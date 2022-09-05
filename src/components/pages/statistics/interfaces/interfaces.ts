@@ -1,9 +1,10 @@
 export interface IGamesStatistic {
   learnedWords: number;
+  score: number;
   bestSeries: number;
   allRightofDay: number;
   allWrongofDay: number;
-  newWordsOfDay: Array<string | number>;
+  newWordsOfDay: number
 }
 export interface IdayStatistic {
   date: Date | string;
@@ -11,10 +12,15 @@ export interface IdayStatistic {
   learnedWordsOfDay: number;
   allRightofDay: number;
   allWrongofDay: number;
-  newWordsOfDay: Array<string | number> | number;
+  newWordsOfDay: number;
+}
+export interface IdayStatisticAll {
+  date: Date | string;
+  learnedWords: number;
+  newWordsOfDay: number;
 }
 export interface IAlltimeStatistic {
-  daysProgress:Array<IdayStatistic>;
+  daysProgress:Array<IdayStatisticAll>;
   words:Array<string | number>;
 }
 export interface IDataGrafStatistis {
