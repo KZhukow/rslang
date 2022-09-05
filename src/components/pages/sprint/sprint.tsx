@@ -172,8 +172,8 @@ export default function Sprint() {
               <div className="timer">{counter}</div>
               <div className="score-and-mute">
                 <div className="mute-btn" onClick={() => switchVolumeAudioSignal(setVolumeAudioSignal)} role="presentation">
-                  {volumeAudioSignal && <FaVolumeMute color="gray" size="100%" />}
-                  {!volumeAudioSignal && <FaVolumeUp color="gray" size="100%" />}
+                  {!volumeAudioSignal && <FaVolumeMute color="gray" size="100%" />}
+                  {volumeAudioSignal && <FaVolumeUp color="gray" size="100%" />}
                 </div>
                 <div className="score">{score}</div>
               </div>

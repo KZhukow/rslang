@@ -48,13 +48,14 @@ export default function TutorialContent() {
     <div className={`tutorialContent ${backGround[curGroup]}`}>
       <div className="cards_content">
         <h2 className="cards_title">
-          Group:
-          {group}
+          {+group === 7 ? 'Difficult words' : `Group: ${group}`}
         </h2>
-        <h4 className="cards_subtitle">
-          Page:
-          {page}
-        </h4>
+        {+group !== 7 && (
+          <h4 className="cards_subtitle">
+            Page:
+            {page}
+          </h4>
+        )}
         <Outlet />
       </div>
       <div className="controllers">
@@ -81,7 +82,7 @@ export default function TutorialContent() {
           <CustomBtnLink to={`../glossary/3/${+group === 3 ? curPage : 1}`} className={`group-btn ${backGroundBtn[2]}`}>3</CustomBtnLink>
           <CustomBtnLink to={`../glossary/4/${+group === 4 ? curPage : 1}`} className={`group-btn ${backGroundBtn[3]}`}>4</CustomBtnLink>
           <CustomBtnLink to={`../glossary/5/${+group === 5 ? curPage : 1}`} className={`group-btn ${backGroundBtn[4]}`}>5</CustomBtnLink>
-          <CustomBtnLink to={`../glossary/6/${+group === 6 ? curPage : 1}`} className={`group-btn ${backGroundBtn[5]}`}>6</CustomBtnLink>  
+          <CustomBtnLink to={`../glossary/6/${+group === 6 ? curPage : 1}`} className={`group-btn ${backGroundBtn[5]}`}>6</CustomBtnLink>
         </div>
         {authorized && <CustomBtnLink to="../glossary/7/1" className="btn difficult_btn">Difficult words</CustomBtnLink>}
       </div>
