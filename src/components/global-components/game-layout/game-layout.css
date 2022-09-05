@@ -1,0 +1,71 @@
+.game-layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-layout-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.game_footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px 0;
+}
+
+.game-result {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 80%;
+  align-self: center;
+  margin-top: 3%;
+  padding: 20px;
+  background-color: rgba(50, 163, 255, 0.6);
+  box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px #035dab;
+}
+
+.game-result-title {
+  text-align: center;
+  padding: 10px 5px;
+}
+
+.game_best_result {
+  margin: 0 0.5rem 1rem;
+}
+
+.game-result-table {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  gap: 5px;
+}
+
+.game-result-table-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+  gap: 5px;
+  height: 35px;
+  align-items: center;
+}
+
+@media screen and (max-width: 950px) {
+
+  .game_best_result {
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  .game-result-table-row {
+    height: 4rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+}

@@ -1,0 +1,131 @@
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+}
+
+.about_list {
+  width: 75vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+}
+
+.about_list_item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.right {
+  flex-direction: row-reverse;
+}
+
+.about_item_img_border {
+  width: 12.5rem;
+  height: 12.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 3.75rem auto;
+  z-index: 100;
+}
+
+.about_item_img_border:after,
+.about_item_img_border:before {
+  mix-blend-mode: multiply;
+  filter: none;
+  z-index: 1;
+  content: '';
+  width: calc(100% + 90px);
+  height: calc(100% + 90px);
+  position: absolute;
+  animation: anim_img_border 8s ease-in-out infinite;
+}
+
+@keyframes anim_img_border {
+
+  0%, 100% {
+      clip-path: polygon(0 0, calc(100% - (33px)) calc(0% + (33px)), 100% 100%, calc(0% + (33px)) calc(100% - (33px)));
+  }
+  50% {
+      clip-path: polygon(calc(0% + (33px)) calc(0% + (33px)), 100% 0, calc(100% - (33px)) calc(100% - (33px)), 0 100%);
+  }
+
+}
+
+.about_item_img_border:after{
+  animation-delay: -5s;
+  background-color: rgba(120, 219, 255, 0.71);
+  clip-path: polygon(0 0, calc(100% - (33px)) calc(0% + (33px)), 100% 100%, calc(0% + (33px)) calc(100% - (33px)));
+}
+
+.about_item_img_border:before {
+  background-color: rgba(51, 117, 183, 0.77);
+  clip-path: polygon(calc(0% + (33px)) calc(0% + (33px)), 100% 0, calc(100% - (33px)) calc(100% - (33px)), 0 100%);
+}
+
+.about_item_img_border:hover:before,
+.about_item_img_border:hover:after {
+  animation-play-state: paused;
+}
+
+.about_item_img {
+  width: 12.5rem;
+  z-index: 2;
+  border-radius: 10% 40% / 50% 20%;
+}
+
+.about_item_description {
+  padding: 0 7rem;
+}
+
+.about_item_name {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.about_description_title {
+  padding: 1rem 0;
+}
+
+.work_list {
+  list-style: none;
+  padding: 0.8rem 0 0 ;
+}
+
+.work_list_item {
+  padding: 0 0 0 1rem;
+}
+
+@media (max-width: 1080px) {
+
+  .about {
+    padding: 11rem 0 5rem;
+  }
+
+}
+
+@media (max-width: 1000px) {
+
+  .about_list_item {
+    flex-direction: column;
+  }
+  .about_item_description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 4rem;
+  }
+  .about_description_text {
+    text-align: center;
+  }
+
+}

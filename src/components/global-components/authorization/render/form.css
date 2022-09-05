@@ -1,0 +1,26 @@
+.errorForm {
+  color: #bf1650;
+}
+.errorForm::before {
+  display: inline;
+  content: "⚠ ";
+}
+
+[disabled]:hover {
+  text-transform: uppercase;
+  background: #035dab;
+  color: #7bbbfd;
+  padding: 0.375rem 0.75rem;
+  letter-spacing: 0.1rem;
+  display: inline-block;
+  font-weight: 400;
+  transition: all 0.3s linear;
+  font-size: 0.9rem;
+  cursor:auto;
+  border-radius: 0.25rem;
+  border-color: transparent;
+}
+
+.error_message {
+  height: 25px;
+}
