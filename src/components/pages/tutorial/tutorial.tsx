@@ -3,6 +3,8 @@ import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import './tutorial.css';
 import { ReactComponent as OnePageArrow } from './image/one-page-arrow.svg';
 import { ReactComponent as AllPageArrow } from './image/all-page-arrow.svg';
+import listening from '../../../assets/images/headphone.png';
+import sprint from '../../../assets/images/сhronometer.png';
 import CustomBtnLink from './custom-btn-link';
 
 import { AuthorizedCtx, ThemeCtx } from '../../app/App';
@@ -73,6 +75,16 @@ export default function TutorialContent() {
             </Link>
             <Link to={`../glossary/${group}/30`} className="pagination-btn last-page-arr">
               <AllPageArrow />
+            </Link>
+          </div>
+        )}
+        {+group !== 7 && (
+          <div className="links-to-games">
+            <Link to="../games/audio-call" className="game_btn" style={{ marginRight: '20px' }}>
+              <img className="game-link-img-glossary" src={listening} alt="Listening" />
+            </Link>
+            <Link to="../games/sprint" className="game_btn">
+              <img className="game-link-img-glossary" src={sprint} alt="Sprint" />
             </Link>
           </div>
         )}
