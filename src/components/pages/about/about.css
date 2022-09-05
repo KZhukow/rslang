@@ -87,3 +87,28 @@
 .about_description_title {
   padding: 1rem 0;
 }
+
+@media (max-width: 1080px) {
+
+  .about {
+    padding: 11rem 0 5rem;
+  }
+
+}
+
+@media (max-width: 1000px) {
+
+  .about_list_item {
+    flex-direction: column;
+  }
+  .about_item_description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 4rem;
+  }
+  .about_description_text {
+    text-align: center;
+  }
+
+}

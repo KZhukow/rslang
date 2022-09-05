@@ -152,11 +152,6 @@
   text-align:right;
 }
 
-.recharts-wrapper {
-  width: 1000px;
-  height: 100px;
-}
-
 @media screen and (max-width: 1500px) {
 
   .authorized_container {
@@ -198,6 +193,16 @@
 
   .game_statistic {
     margin: 0;
+  }
+  .recharts-surface {
+    width: 600px;
+    height: 400px;
+  }
+  .graphic_y_line {
+    padding-left: 4rem;
+  }
+  .graphic_x_line {
+    padding-right: 4rem;
   }
 
 }
