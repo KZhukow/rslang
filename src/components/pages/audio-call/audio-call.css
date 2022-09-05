@@ -23,11 +23,12 @@
 
 .wrapper-words-choise-call {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .wrapper-word-call {
-  padding: 2.5rem;
+  padding: 1rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
