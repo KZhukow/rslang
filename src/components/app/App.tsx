@@ -17,33 +17,37 @@ import TutorialContent from '../pages/tutorial/tutorial';
 import { TAuthorizedCtx, TAudioPlay } from '../pages/tutorial/types';
 
 export const AuthorizedCtx = createContext([] as unknown as TAuthorizedCtx);
+export const ThemeCtx = createContext(([] as unknown as TAuthorizedCtx));
 export const AudioPlayCtx = createContext([] as unknown as TAudioPlay);
 export const audioEl = new Audio();
 
 export default function App() {
   const authorizedInitCtx = useState(validToken());
   const audioPlayInitCtx = useState('');
+  const themeInitCtx = useState(true);
 
   return (
     <AuthorizedCtx.Provider value={authorizedInitCtx}>
       <AudioPlayCtx.Provider value={audioPlayInitCtx}>
-        <Routes>
-          <Route path="/" element={<MainLayout />}>
-            <Route index element={<Main />} />
-            <Route path="statistics" element={<Statistics />} />
-            <Route path="games" element={<Games />} />
-            <Route path="about" element={<About />} />
-            <Route path="glossary/:group/:page" element={<TutorialContent />}>
-              <Route index element={<AllCards />} />
+        <ThemeCtx.Provider value={themeInitCtx}>
+          <Routes>
+            <Route path="/" element={<MainLayout />}>
+              <Route index element={<Main />} />
+              <Route path="statistics" element={<Statistics />} />
+              <Route path="games" element={<Games />} />
+              <Route path="about" element={<About />} />
+              <Route path="glossary/:group/:page" element={<TutorialContent />}>
+                <Route index element={<AllCards />} />
+              </Route>
+              <Route path="glossary/*" element={<Navigate to="1/1" replace />} />
+              <Route path="*" element={<Error />} />
             </Route>
-            <Route path="glossary/*" element={<Navigate to="1/1" replace />} />
-            <Route path="*" element={<Error />} />
-          </Route>
-          <Route path="games" element={<GameLayout />}>
-            <Route path="audio-call" element={<AudioCall />} />
-            <Route path="sprint" element={<Sprint />} />
-          </Route>
-        </Routes>
+            <Route path="games" element={<GameLayout />}>
+              <Route path="audio-call" element={<AudioCall />} />
+              <Route path="sprint" element={<Sprint />} />
+            </Route>
+          </Routes>
+        </ThemeCtx.Provider>
       </AudioPlayCtx.Provider>
     </AuthorizedCtx.Provider>
   );
