@@ -2,6 +2,7 @@ import { IUserWordInfo } from './types';
 
 export const adress = 'https://react-rslang-back-app.herokuapp.com/';
 export const wordsPage = (group: number, page: number) => `${adress}words?group=${group}&page=${page}`;
+export const getUrlAggregateWordsPage = (group: number, page: number, id: string) => `${adress}users/${id}/aggregatedWords?wordsPerPage=20&filter={ "$and": [{ "page": ${page} }, {"group": ${group}}] }`;
 
 export const getURLCreateWord = (userID: string, wordID: string) => `${adress}users/${userID}/words/${wordID}`;
 
@@ -37,6 +38,48 @@ export const getUpdateWordOptional = (result: boolean, info: IUserWordInfo): str
   const counterRight = result ? info.optional.counterRight + 1 : info.optional.counterRight;
   const counterWrong = result ? info.optional.counterWrong : info.optional.counterWrong + 1;
   const { id } = info.optional;
+  return JSON.stringify({
+    difficulty,
+    optional: {
+      counterRight,
+      counterWrong,
+      curSeries,
+      id,
+    },
+  });
+};
+
+export const getWordOptional = (wordID: string, typeBtn: boolean) => {
+  const difficulty = typeBtn ? 'study' : 'hard';
+  const counterRight = 0;
+  const counterWrong = 0;
+  const curSeries = typeBtn ? 3 : 0;
+  const id = wordID;
+  return JSON.stringify({
+    difficulty,
+    optional: {
+      counterRight,
+      counterWrong,
+      curSeries,
+      id,
+    },
+  });
+};
+export const updateWordOptional = (
+  userWord: IUserWordInfo,
+  typeBtn: boolean,
+  btnState: boolean,
+) => {
+  let { difficulty } = userWord;
+  let { curSeries } = userWord.optional;
+  if (!btnState) {
+    difficulty = 'none';
+    curSeries = 0;
+  } else {
+    difficulty = typeBtn ? 'study' : 'hard';
+    curSeries = typeBtn ? 3 : 0;
+  }
+  const { counterRight, counterWrong, id } = userWord.optional;
   return JSON.stringify({
     difficulty,
     optional: {

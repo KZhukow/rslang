@@ -228,3 +228,33 @@
 .devil-not-active {
   fill: black;
 }
+
+.modify-btn-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  background-color: rgb(255 255 255 / 50%);
+  box-shadow: 0 0 6px 5px rgb(255 255 255 / 50%);
+}
+
+.dGroup-green {
+  background-color: red;
+}
+.dGroup-yellow {
+  background-color: white;
+}
+.dGroup-orange {
+  background-color: black;
+}
+.dGroup-pink {
+  background-color: blue;
+}
+.dGroup-purpure {
+  background-color: yellow;
+}
+.dGroup-violet {
+  background-color: green;
+}

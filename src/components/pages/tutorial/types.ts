@@ -35,22 +35,6 @@ export interface IGlobalContext {
   authorized: TAuthorizedCtx,
 }
 
-export interface CardProp {
-  word: IWord;
-}
-export interface CardsProp {
-  wordsInfo: IWord[];
-}
-export interface AudioBtnsProp {
-  id: string,
-  audioSrc: IAudioSrc,
-}
-export interface CustomLinkProp {
-  children: React.ReactNode,
-  to: string,
-  className: string,
-}
-
 export interface RestartGameSprintProp {
   setCounter: React.Dispatch<React.SetStateAction<number>> | (() => 0),
   setCurGroup: React.Dispatch<React.SetStateAction<number>> | (() => 0),
@@ -92,4 +76,54 @@ export interface IUserWordInfo {
 export interface IOldWordsInfo {
   result: boolean,
   info: IUserWordInfo,
+}
+
+export interface IPaginatedResults {
+  userWord?: IUserWordInfo,
+  audio: string,
+  audioExample: string,
+  audioMeaning: string,
+  group: number
+  image: string,
+  page: number
+  textExample: string,
+  textExampleTranslate: string,
+  textMeaning: string,
+  textMeaningTranslate: string,
+  transcription: string,
+  word: string,
+  wordTranslate: string,
+  _id: string,
+}
+interface ICount {
+  count: number,
+}
+type Count = [ICount];
+export interface IAggregatedWords{
+  paginatedResults: IPaginatedResults[],
+  totalCount: Count,
+}
+
+export interface CardProp {
+  word: IPaginatedResults | IWord;
+}
+export interface CardsProp {
+  wordsInfo: IWord[];
+}
+export interface AudioBtnsProp {
+  id: string,
+  audioSrc: IAudioSrc,
+}
+export interface CustomLinkProp {
+  children: React.ReactNode,
+  to: string,
+  className: string,
+}
+export interface ModifierBtnsProp {
+  userWord: IUserWordInfo | undefined,
+  id: string,
+}
+export interface ITutorialParams {
+  group: string,
+  page: string,
 }

@@ -1,9 +1,14 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import './themeToggle.css';
 import { BiSun, BiMoon } from 'react-icons/bi';
+import { useContext } from 'react';
+import { ThemeCtx } from '../../../app/App';
 
 export default function ThemeToggle() {
+  const [, setTheme] = useContext(ThemeCtx);
+
   function themeMode() {
+    setTheme((state) => !state);
     document.querySelector('.light')!.classList.toggle('hidden');
     document.querySelector('.dark')!.classList.toggle('hidden');
     document.querySelectorAll('header')!.forEach((item) => {
