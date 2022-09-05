@@ -44,29 +44,31 @@ export default function AudioCall() {
       fetchWords();
     }
   }, [curGroup]);
+
   function selectGroup(event: SyntheticEvent) {
     const target = event.target as HTMLElement;
     setCurGroup(+target.innerHTML - 1);
   }
+
   return (
     <div className="game-audio-call" role="presentation">
       {(loading && curGroup !== -1) && (<div className="spinner"><Spinner /></div>)}
       {
         curGroup === -1 && (
           <div className="view-to-select-group">
-            <div>Аудиовызов</div>
-            <div>
-              Вы слышите слово и видите 5 возможных переводов.
-              Вы не видите, как это слово пишется по-английски.
-              Ваша задача - выбрать правильный перевод произносимого слова.
-            </div>
+            <h3 className="select_group_title">Audio Call</h3>
+            <p>
+              You hear the word and see 5 possible translations.
+              You don`t see how this word is spelled in English.
+              Your task is to choose the correct translation of the spoken word.
+            </p>
             <div className="btns-to-select-group">
-              <button type="button" className="btn-to-select-group group-btn-green" onClick={selectGroup}>1</button>
-              <button type="button" className="btn-to-select-group group-btn-yellow" onClick={selectGroup}>2</button>
-              <button type="button" className="btn-to-select-group group-btn-orange" onClick={selectGroup}>3</button>
-              <button type="button" className="btn-to-select-group group-btn-pink" onClick={selectGroup}>4</button>
-              <button type="button" className="btn-to-select-group group-btn-purpure" onClick={selectGroup}>5</button>
-              <button type="button" className="btn-to-select-group group-btn-violet" onClick={selectGroup}>6</button>
+              <button type="button" className="btn-to-select-group group_btn_first" onClick={selectGroup}>1</button>
+              <button type="button" className="btn-to-select-group group_btn_second" onClick={selectGroup}>2</button>
+              <button type="button" className="btn-to-select-group group_btn_third" onClick={selectGroup}>3</button>
+              <button type="button" className="btn-to-select-group group_btn_fourth" onClick={selectGroup}>4</button>
+              <button type="button" className="btn-to-select-group group_btn_fifth" onClick={selectGroup}>5</button>
+              <button type="button" className="btn-to-select-group group_btn_sixth" onClick={selectGroup}>6</button>
             </div>
           </div>
         )

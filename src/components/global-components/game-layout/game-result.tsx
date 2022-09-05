@@ -49,7 +49,7 @@ export default function GameResult() {
     <div className="game-result">
       {loading && (<div className="spinner"><Spinner /></div>)}
       <h2 className="game-result-title">Game Result</h2>
-      <p>{`${typeGame ? 'Score' : 'Best series'}: ${gameResult.score}`}</p>
+      <p className="game_best_result">{`${typeGame ? 'Score' : 'Best series'}: ${gameResult.score}`}</p>
       <div className="game-result-table">
         {
         gameResult.wordInGame.length
