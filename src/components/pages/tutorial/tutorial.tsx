@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import './tutorial.css';
-
 import { ReactComponent as OnePageArrow } from './image/one-page-arrow.svg';
 import { ReactComponent as AllPageArrow } from './image/all-page-arrow.svg';
 import CustomBtnLink from './custom-btn-link';
+import { ThemeCtx } from '../../app/App';
 
 interface ITutorialParams {
   group: string,
   page: string,
 }
 export default function TutorialContent() {
-  const backGround = ['group-green', 'group-yellow', 'group-orange', 'group-pink', 'group-purpure', 'group-violet'];
+  const [themeType] = useContext(ThemeCtx);
+  const backGround = themeType
+    ? ['group_first', 'group_second', 'group_third', 'group_fourth', 'group_fifth', 'group_sixth']
+    : ['dark_group_first', 'dark_group_second', 'dark_group_third', 'dark_group_fourth', 'dark_group_fifth', 'dark_group_sixth'];
+  const backGroundBtn = themeType
+    ? ['group_btn_first', 'group_btn_second', 'group_btn_third', 'group_btn_fourth', 'group_btn_fifth', 'group_btn_sixth']
+    : ['dark_btn_first', 'dark_btn_second', 'dark_btn_third', 'dark_btn_fourth', 'dark_btn_fifth', 'dark_btn_sixth'];
 
   const { group, page } = useParams() as unknown as ITutorialParams;
   const curGroup = +group - 1;
@@ -34,10 +40,20 @@ export default function TutorialContent() {
     e.target.value = '';
     navigate(`../glossary/${group}/${value}`);
   }
+
   return (
     <div className={`tutorialContent ${backGround[curGroup]}`}>
-      {/* <div className="spinner"><Spinner /></div> */}
-      <Outlet />
+      <div className="cards_content">
+        <h2 className="cards_title">
+          Group:
+          {group}
+        </h2>
+        <h4 className="cards_subtitle">
+          Page:
+          {page}
+        </h4>
+        <Outlet />
+      </div>
       <div className="controllers">
         <div className="pagination">
           <Link to={`../glossary/${group}/1`} className="pagination-btn first-page-arr">
@@ -55,14 +71,14 @@ export default function TutorialContent() {
           </Link>
         </div>
         <div className="group-btns">
-          <CustomBtnLink to={`../glossary/1/${+group === 1 ? curPage : 1}`} className="group-btn group-btn-green">1</CustomBtnLink>
-          <CustomBtnLink to={`../glossary/2/${+group === 2 ? curPage : 1}`} className="group-btn group-btn-yellow">2</CustomBtnLink>
-          <CustomBtnLink to={`../glossary/3/${+group === 3 ? curPage : 1}`} className="group-btn group-btn-orange">3</CustomBtnLink>
-          <CustomBtnLink to={`../glossary/4/${+group === 4 ? curPage : 1}`} className="group-btn group-btn-pink">4</CustomBtnLink>
-          <CustomBtnLink to={`../glossary/5/${+group === 5 ? curPage : 1}`} className="group-btn group-btn-purpure">5</CustomBtnLink>
-          <CustomBtnLink to={`../glossary/6/${+group === 6 ? curPage : 1}`} className="group-btn group-btn-violet">6</CustomBtnLink>
-          <button type="button" className="group-btn group-btn-black">D</button>
+          <CustomBtnLink to={`../glossary/1/${+group === 1 ? curPage : 1}`} className={`group-btn ${backGroundBtn[0]}`}>1</CustomBtnLink>
+          <CustomBtnLink to={`../glossary/2/${+group === 2 ? curPage : 1}`} className={`group-btn ${backGroundBtn[1]}`}>2</CustomBtnLink>
+          <CustomBtnLink to={`../glossary/3/${+group === 3 ? curPage : 1}`} className={`group-btn ${backGroundBtn[2]}`}>3</CustomBtnLink>
+          <CustomBtnLink to={`../glossary/4/${+group === 4 ? curPage : 1}`} className={`group-btn ${backGroundBtn[3]}`}>4</CustomBtnLink>
+          <CustomBtnLink to={`../glossary/5/${+group === 5 ? curPage : 1}`} className={`group-btn ${backGroundBtn[4]}`}>5</CustomBtnLink>
+          <CustomBtnLink to={`../glossary/6/${+group === 6 ? curPage : 1}`} className={`group-btn ${backGroundBtn[5]}`}>6</CustomBtnLink>
         </div>
+        <button type="button" className="btn difficult_btn">Difficult words</button>
       </div>
     </div>
   );

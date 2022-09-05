@@ -12,22 +12,24 @@ export default function Card({ word }: CardProp) {
   };
 
   return (
-    <div className="card-container">
+    <div className="card_container">
       <ModifierBtns />
-      <div className="card-img" style={{ backgroundImage: bgCard }}>
-        <div className="card-gradient">
-          <p className="card-title">{ word.word }</p>
-          <div className="card-subtitle">
+      <div className="card_img" style={{ backgroundImage: bgCard }}>
+        <div className="card_gradient">
+          <p className="card_title">{ word.word }</p>
+          <div className="card_subtitle">
             <span>{ word.transcription }</span>
             <span>{ word.wordTranslate }</span>
             <AudioBtns id={word.id} audioSrc={audioSrc} />
           </div>
         </div>
       </div>
-      <p dangerouslySetInnerHTML={{ __html: word.textMeaning }} />
-      <p>{ word.textMeaningTranslate }</p>
-      <p dangerouslySetInnerHTML={{ __html: word.textExample }} />
-      <p>{ word.textExampleTranslate }</p>
+      <div className="card_description">
+        <p dangerouslySetInnerHTML={{ __html: word.textMeaning }} />
+        <p>{ word.textMeaningTranslate }</p>
+        <p dangerouslySetInnerHTML={{ __html: word.textExample }} className="card_text" />
+        <p>{ word.textExampleTranslate }</p>
+      </div>
     </div>
   );
 }
