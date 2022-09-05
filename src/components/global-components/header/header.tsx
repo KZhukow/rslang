@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import logo from '../../../assets/images/logo.png';
+// import logo from '../../../assets/images/logo.png';
 import Authorization from '../authorization/Authorization';
 import CustomHeaderLink from './header-custom-link';
 import ThemeToggle from './themeToggle/themeToggle';
@@ -13,7 +13,7 @@ export default function Header() {
       <div className="header_container">
         <div className="header_logo">
           <Link to="/" className="logo_link">
-            <img className="logo_img" src={logo} alt="Logo" />
+            <img className="logo_img" src="https://react-rslang-back-app.herokuapp.com/files/img/logo.png" alt="Logo" />
           </Link>
         </div>
         <div className="header_nav menu_closed">

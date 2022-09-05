@@ -1,8 +1,8 @@
 import './about.css';
 import { useContext, useEffect } from 'react';
-import KZhukow from '../../../assets/images/KZhukow.png';
-import Lissa from '../../../assets/images/Lissa.png';
-import Yamarauder from '../../../assets/images/yamarauder.png';
+// import KZhukow from '../../../assets/images/KZhukow.png';
+// import Lissa from '../../../assets/images/Lissa.png';
+// import Yamarauder from '../../../assets/images/yamarauder.png';
 import { AuthorizedCtx } from '../../app/App';
 import { viewButtonLogin } from '../../global-components/authorization/utils/utils';
 
@@ -17,7 +17,7 @@ export default function About() {
         <div className="about_list">
           <article className="about_list_item">
             <div id="article" className="about_item_img_border">
-              <img className="about_item_img" src={KZhukow} alt="KZhukow" />
+              <img className="about_item_img" src="https://react-rslang-back-app.herokuapp.com/files/img/KZhukow.png" alt="KZhukow" />
             </div>
             <div className="about_item_description">
               <div className="about_item_name">
@@ -45,7 +45,7 @@ export default function About() {
           </article>
           <article className="about_list_item right">
             <div className="about_item_img_border">
-              <img className="about_item_img" src={Lissa} alt="Lissa" />
+              <img className="about_item_img" src="https://react-rslang-back-app.herokuapp.com/files/img/Lissa.png" alt="Lissa" />
             </div>
             <div className="about_item_description">
               <div className="about_item_name">
@@ -72,7 +72,7 @@ export default function About() {
           </article>
           <article className="about_list_item">
             <div className="about_item_img_border">
-              <img className="about_item_img" src={Yamarauder} alt="Yamarauder" />
+              <img className="about_item_img" src="https://react-rslang-back-app.herokuapp.com/files/img/yamarauder.png" alt="Yamarauder" />
             </div>
             <div className="about_item_description">
               <div className="about_item_name">

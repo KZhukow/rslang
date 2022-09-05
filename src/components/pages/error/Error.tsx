@@ -1,7 +1,7 @@
 import './error.css';
 import { Link } from 'react-router-dom';
 import { BiRightArrowAlt } from 'react-icons/bi';
-import logo from '../../../assets/images/logo.png';
+// import logo from '../../../assets/images/logo.png';
 
 export default function Error() {
   return (
@@ -13,7 +13,7 @@ export default function Error() {
           <BiRightArrowAlt className="error_arrow" />
           <div className="header_logo">
             <Link to="/" className="logo_link">
-              <img className="logo_img" src={logo} alt="Logo" />
+              <img className="logo_img" src="https://react-rslang-back-app.herokuapp.com/files/img/logo.png" alt="Logo" />
             </Link>
           </div>
         </div>

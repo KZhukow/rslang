@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import logIn from '../../../assets/images/userOut.png';
-import logOut from '../../../assets/images/userIn.png';
+// import logIn from '../../../assets/images/userOut.png';
+// import logOut from '../../../assets/images/userIn.png';
 import { popupOpen, loginForm, registrationForm, popupClose, exitPage } from './utils/utils';
 import Registration from './render/registration';
 import { AuthorizedCtx } from '../../app/App';
@@ -13,11 +13,11 @@ export default function Authorization() {
     <div className="header_authorization">
       <div className="authorization_btn">
         <button type="button" className="authorization_btn btn_login" id="btn_login" onClick={() => popupOpen(authrize)}>
-          <img className="authorization_img" src={logIn} alt="logIn" />
+          <img className="authorization_img" src="https://react-rslang-back-app.herokuapp.com/files/img/userOut.png" alt="logIn" />
           <p className="authorization_title">login</p>
         </button>
         <button type="button" className="authorization_btn btn_logout hidden" id="btn_logout" onClick={() => exitPage(setAuthrize)}>
-          <img className="authorization_img" src={logOut} alt="logOut" />
+          <img className="authorization_img" src="https://react-rslang-back-app.herokuapp.com/files/img/userIn.png" alt="logOut" />
           <p className="authorization_title title_logout">logout</p>
         </button>
       </div>

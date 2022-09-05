@@ -4,11 +4,11 @@ import './sprint.css';
 import { FaArrowCircleLeft, FaArrowCircleRight, FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
 import { ReactComponent as Lamp } from './img/lamp.svg';
 import { ReactComponent as Spinner } from '../tutorial/image/spinner.svg';
-import bird1 from './img/bird1.png';
-import bird2 from './img/bird2.png';
-import bird3 from './img/bird3.png';
-import bird4 from './img/bird4.png';
-import stick from './img/stick.png';
+// import bird1 from './img/bird1.png';
+// import bird2 from './img/bird2.png';
+// import bird3 from './img/bird3.png';
+// import bird4 from './img/bird4.png';
+// import stick from './img/stick.png';
 import { wordsPage } from '../tutorial/const';
 
 import { IWord } from '../tutorial/types';
@@ -188,11 +188,11 @@ export default function Sprint() {
                 <div className={`lamp ${lampSeries > 2 ? 'lamp-active' : ''}`} id="lamp3" onAnimationEnd={setDefaultLamp}><Lamp /></div>
               </div>
               <div className="birds">
-                <img src={bird1} className="bird bird-active" id="bird1" alt="bird1" />
-                <img src={bird2} className={`bird ${birdSeries > 0 ? 'bird-active' : ''}`} id="bird2" alt="bird2" />
-                <img src={bird3} className={`bird ${birdSeries > 1 ? 'bird-active' : ''}`} id="bird3" alt="bird3" />
-                <img src={bird4} className={`bird ${birdSeries > 2 ? 'bird-active' : ''}`} id="bird4" alt="bird4" />
-                <img src={stick} className="stick" alt="stick" />
+                <img src="https://react-rslang-back-app.herokuapp.com/files/img/bird1.png" className="bird bird-active" id="bird1" alt="bird1" />
+                <img src="https://react-rslang-back-app.herokuapp.com/files/img/bird2.png" className={`bird ${birdSeries > 0 ? 'bird-active' : ''}`} id="bird2" alt="bird2" />
+                <img src="https://react-rslang-back-app.herokuapp.com/files/img/bird3.png" className={`bird ${birdSeries > 1 ? 'bird-active' : ''}`} id="bird3" alt="bird3" />
+                <img src="https://react-rslang-back-app.herokuapp.com/files/img/bird4.png" className={`bird ${birdSeries > 2 ? 'bird-active' : ''}`} id="bird4" alt="bird4" />
+                <img src="https://react-rslang-back-app.herokuapp.com/files/img/stick.png" className="stick" alt="stick" />
               </div>
               <SprintAudioBtn src={wordArr[wordNum].audio} />
               <div className="sprint-eng-word">{wordArr[wordNum].word}</div>

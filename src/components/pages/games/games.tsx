@@ -1,8 +1,8 @@
 import './games.css';
 import { Link } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
-import listening from '../../../assets/images/headphone.png';
-import sprint from '../../../assets/images/сhronometer.png';
+// import listening from '../../../assets/images/headphone.png';
+// import sprint from '../../../assets/images/сhronometer.png';
 import { viewButtonLogin } from '../../global-components/authorization/utils/utils';
 import { AuthorizedCtx } from '../../app/App';
 
@@ -17,7 +17,7 @@ export default function Games() {
         <section className="game">
           <div className="game_title_border">
             <Link to="audio-call" className="game_btn">
-              <img className="game_img" src={listening} alt="Listening" />
+              <img className="game_img" src="https://react-rslang-back-app.herokuapp.com/files/img/headphone.png" alt="Listening" />
             </Link>
           </div>
           <p className="game_description_text">
@@ -28,7 +28,7 @@ export default function Games() {
         <section className="game">
           <div className="game_title_border">
             <Link to="sprint" className="game_btn">
-              <img className="game_img" src={sprint} alt="Sprint" />
+              <img className="game_img" src="https://react-rslang-back-app.herokuapp.com/files/img/сhronometer.png" alt="Sprint" />
             </Link>
           </div>
           <p className="game_description_text">
