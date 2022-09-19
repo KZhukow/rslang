@@ -2,6 +2,7 @@
   "name": "rslang",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://rslang-kzhukow.netlify.app",
   "dependencies": {
     "@chakra-ui/react": "^2.2.9",
     "@emotion/react": "^11.10.0",
