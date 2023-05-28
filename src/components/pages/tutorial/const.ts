@@ -1,6 +1,6 @@
 import { IUserWordInfo } from './types';
 
-export const adress = 'https://react-rslang-back-app.herokuapp.com/';
+export const adress = 'https://react-rslang-back-app.onrender.com/';
 export const wordsPage = (group: number, page: number) => `${adress}words?group=${group}&page=${page}`;
 export const getUrlAggregateWordsPage = (group: number, page: number, id: string) => `${adress}users/${id}/aggregatedWords?wordsPerPage=20&filter={ "$and": [{ "page": ${page} }, {"group": ${group}}] }`;
 

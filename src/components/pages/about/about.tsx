@@ -17,7 +17,7 @@ export default function About() {
         <div className="about_list">
           <article className="about_list_item">
             <div id="article" className="about_item_img_border">
-              <img className="about_item_img" src="https://react-rslang-back-app.herokuapp.com/files/img/KZhukow.png" alt="KZhukow" />
+              <img className="about_item_img" src="https://react-rslang-back-app.onrender.com/files/img/KZhukow.png" alt="KZhukow" />
             </div>
             <div className="about_item_description">
               <div className="about_item_name">
@@ -45,7 +45,7 @@ export default function About() {
           </article>
           <article className="about_list_item right">
             <div className="about_item_img_border">
-              <img className="about_item_img" src="https://react-rslang-back-app.herokuapp.com/files/img/Lissa.png" alt="Lissa" />
+              <img className="about_item_img" src="https://react-rslang-back-app.onrender.com/files/img/Lissa.png" alt="Lissa" />
             </div>
             <div className="about_item_description">
               <div className="about_item_name">
@@ -72,7 +72,7 @@ export default function About() {
           </article>
           <article className="about_list_item">
             <div className="about_item_img_border">
-              <img className="about_item_img" src="https://react-rslang-back-app.herokuapp.com/files/img/yamarauder.png" alt="Yamarauder" />
+              <img className="about_item_img" src="https://react-rslang-back-app.onrender.com/files/img/yamarauder.png" alt="Yamarauder" />
             </div>
             <div className="about_item_description">
               <div className="about_item_name">

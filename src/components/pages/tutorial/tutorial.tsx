@@ -81,10 +81,10 @@ export default function TutorialContent() {
         {+group !== 7 && (
           <div className="links-to-games">
             <Link to="../games/audio-call" className="game_btn" style={{ marginRight: '20px' }}>
-              <img className="game-link-img-glossary" src="https://react-rslang-back-app.herokuapp.com/files/img/headphone.png" alt="Listening" />
+              <img className="game-link-img-glossary" src="https://react-rslang-back-app.onrender.com/files/img/headphone.png" alt="Listening" />
             </Link>
             <Link to="../games/sprint" className="game_btn">
-              <img className="game-link-img-glossary" src="https://react-rslang-back-app.herokuapp.com/files/img/сhronometer.png" alt="Sprint" />
+              <img className="game-link-img-glossary" src="https://react-rslang-back-app.onrender.com/files/img/сhronometer.png" alt="Sprint" />
             </Link>
           </div>
         )}

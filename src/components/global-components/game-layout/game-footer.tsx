@@ -10,7 +10,7 @@ export default function GameFooter() {
     <div className="game_footer">
       <div className="header_logo">
         <Link to="/" className="logo_link">
-          <img className="logo_img" src="https://react-rslang-back-app.herokuapp.com/files/img/logo.png" alt="Logo" />
+          <img className="logo_img" src="https://react-rslang-back-app.onrender.com/files/img/logo.png" alt="Logo" />
         </Link>
       </div>
       <button type="button" className="game_footer_link" onClick={() => restartGame(typeGame)}>Start again</button>

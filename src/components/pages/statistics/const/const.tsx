@@ -1,4 +1,4 @@
-export const BASELINK = 'https://react-rslang-back-app.herokuapp.com/';
+export const BASELINK = 'https://react-rslang-back-app.onrender.com/';
 export const USERS = `${BASELINK}users`;
 export const SIGNIN = `${BASELINK}signin`;
 

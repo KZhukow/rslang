@@ -6,7 +6,7 @@ import { gamePlayAudio } from '../utils/utils';
 
 export default function AnswerContentCall({ word }: CardProp) {
   const [, setAudioState] = useContext(AudioPlayCtx);
-  const bgCard = `url(https://react-rslang-back-app.herokuapp.com/${word.image})`;
+  const bgCard = `url(https://react-rslang-back-app.onrender.com/${word.image})`;
   return (
     <div className="answer-word-call call-hidden" id="answer-word-call">
       <div className="card-img-answer-call" style={{ backgroundImage: bgCard }}> </div>

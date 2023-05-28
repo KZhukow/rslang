@@ -7,11 +7,11 @@ import ModifierBtns from './modifierBtns';
 import WordStatistics from './word-statistics';
 
 export default function Card({ word, setCounter }: CardProp) {
-  const bgCard = `url(https://react-rslang-back-app.herokuapp.com/${word.image})`;
+  const bgCard = `url(https://react-rslang-back-app.onrender.com/${word.image})`;
   const audioSrc: IAudioSrc = {
-    audio0: `https://react-rslang-back-app.herokuapp.com/${word.audio}`,
-    audio1: `https://react-rslang-back-app.herokuapp.com/${word.audioMeaning}`,
-    audio2: `https://react-rslang-back-app.herokuapp.com/${word.audioExample}`,
+    audio0: `https://react-rslang-back-app.onrender.com/${word.audio}`,
+    audio1: `https://react-rslang-back-app.onrender.com/${word.audioMeaning}`,
+    audio2: `https://react-rslang-back-app.onrender.com/${word.audioExample}`,
   };
   const [authorized] = useContext(AuthorizedCtx);
 
